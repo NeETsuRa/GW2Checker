@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_camera -> {
                 val thread = Thread(Runnable {
                     try {
-                        get("https://api.guildwars2.com/v2/achievements?ids=1840,910,2258")
+                        get("" + R.string.APIUrl + "/v2/achievements?ids=1840,910,2258")
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
