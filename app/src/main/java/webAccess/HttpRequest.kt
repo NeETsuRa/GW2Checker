@@ -1,5 +1,8 @@
 package webAccess
 
+import android.content.Context
+import android.util.Log
+import com.dev.neetsu.gw2checker.R
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -12,6 +15,38 @@ import java.io.IOException
 class HttpRequest {
     public val JSON = MediaType.get("application/json; charset=utf-8")
     var client = OkHttpClient()
+
+    fun get(token: String, url: String): String {
+        var response = ""
+        val thread = Thread(Runnable {
+            try {
+                response = HttpRequest().getF(token,url)
+                Log.d("HttpRequest", "webAccess:HttpRequest:get:: " + response)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        })
+
+        thread.start()
+        thread.join()
+        return response
+    }
+
+    fun post(token: String, url: String, json: String): String {
+        var response = ""
+        val thread = Thread(Runnable {
+            try {
+                response = HttpRequest().postF(token,url,json)
+                Log.d("HttpRequest", "webAccess:HttpRequest:post:: " + response)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        })
+
+        thread.start()
+        thread.join()
+        return response
+    }
 
     private fun prepareRequest(url: String, token: String, body: RequestBody? = null): Request {
 
@@ -28,11 +63,8 @@ class HttpRequest {
                 .build()
     }
 
-    operator fun get(url: String): String {
-        //TODO: Get Token Function
-        val token = "18DB49E1-BF7C-5345-8C63-3E5CB7FAC342F9B6560C-D84D-4B72-B7A0-6B2A951F3E22"
+    private fun getF(token: String, url: String): String {
         val request = prepareRequest(url, token)
-
         try {
             client.newCall(request).execute().use { response ->
                 val resp = response.body()!!.string()
@@ -44,10 +76,7 @@ class HttpRequest {
         return ""
     }
 
-    fun post(url: String, json: String): String? {
-        //TODO: Get Token Function
-        val token = "18DB49E1-BF7C-5345-8C63-3E5CB7FAC342F9B6560C-D84D-4B72-B7A0-6B2A951F3E22"
-
+    private fun postF(token: String, url: String, json: String): String {
         val body = RequestBody.create(JSON, json)
         val request = prepareRequest(url, token, body)
         try {
