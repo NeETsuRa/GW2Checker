@@ -17,6 +17,7 @@ import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import webAccess.HttpRequest
 import java.io.IOException
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -72,7 +73,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_camera -> {
                 val thread = Thread(Runnable {
                     try {
-                        get("" + R.string.APIUrl + "/v2/achievements?ids=1840,910,2258")
+                        //var response = get("" + R.string.APIUrl + R.string.V1_Build)
+                        var response = HttpRequest().get("" + resources.getString(R.string.APIUrl) + resources.getString(R.string.V1_Build))
+                        Log.d("HTTP Request", "get: " + response)
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
@@ -100,7 +103,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
-
+/*
     private fun prepareRequest(url: String, token: String, body: RequestBody? = null): Request {
 
         if (body==null)
@@ -116,7 +119,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .build()
     }
 
-    operator fun get(url: String) {
+    operator fun get(url: String): String {
         //TODO: Get Token Function
         val token = "18DB49E1-BF7C-5345-8C63-3E5CB7FAC342F9B6560C-D84D-4B72-B7A0-6B2A951F3E22"
         val request = prepareRequest(url, token)
@@ -124,15 +127,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         try {
             client.newCall(request).execute().use { response ->
                 val resp = response.body()!!.string()
-                Log.d("HTTP Request", "get: " + resp)
+                return resp
             }
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
+        return ""
     }
 
-    fun post(url: String, json: String) {
+    fun post(url: String, json: String): String? {
         //TODO: Get Token Function
         val token = "18DB49E1-BF7C-5345-8C63-3E5CB7FAC342F9B6560C-D84D-4B72-B7A0-6B2A951F3E22"
 
@@ -141,11 +144,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         try {
             client.newCall(request).execute().use { response ->
                 val resp = response.body()!!.string()
-                Log.d("HTTP Request", "post: " + resp)
+                return resp
             }
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
+        return ""
     }
+    */
 }
