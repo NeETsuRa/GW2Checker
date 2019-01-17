@@ -6,11 +6,15 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.text.method.ScrollingMovementMethod
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import android.widget.TextView
 import com.dev.neetsu.gw2checker.R
 import enums.GW2_API_V1
+import enums.GW2_API_V2
 import enums.Properties
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -30,6 +34,30 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .setAction("Action", null).show()
         }
 
+
+        //List view
+        val list: ListView = findViewById(R.id.List)
+        val listItems = arrayOfNulls<String>(GW2_API_V1.values().size + GW2_API_V2.values().size)
+        val text: TextView = findViewById(R.id.MainText)
+        text.setMovementMethod(ScrollingMovementMethod())
+
+        for (i in 0 until GW2_API_V1.values().size) {
+            val element = GW2_API_V1.values()[i]
+            listItems[i] = element.value
+        }
+        for (i in 0 until GW2_API_V2.values().size) {
+            val element = GW2_API_V2.values()[i]
+            listItems[GW2_API_V1.values().size + i] = element.value
+        }
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems)
+        list.adapter = adapter
+
+        val context = this
+        list.setOnItemClickListener { _, _, position, _ ->
+            val selected = listItems[position]
+            var response = HttpRequest().get(token,Properties.APIUrl.value + selected.toString())
+            text.setText(response)
+        }
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
