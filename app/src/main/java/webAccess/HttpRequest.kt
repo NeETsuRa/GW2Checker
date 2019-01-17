@@ -69,9 +69,8 @@ class HttpRequest {
                 return resp
             }
         } catch (e: IOException) {
-            handleError(e);
+            return handleError(e);
         }
-        return ""
     }
 
     private fun postF(token: String, url: String, json: String): String {
@@ -83,12 +82,12 @@ class HttpRequest {
                 return resp
             }
         } catch (e: IOException) {
-            handleError(e);
+            return handleError(e);
         }
-        return ""
     }
 
-    private fun handleError(e: IOException) {
+    private fun handleError(e: IOException): String {
         e.printStackTrace()
+        return "Error"
     }
 }
