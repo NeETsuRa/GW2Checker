@@ -7,7 +7,7 @@ package enums
  * URL to API:
  *  https://wiki.guildwars2.com/wiki/API:1
  */
-enum class GW2_API_V1(val endpoint: String) {
+enum class GW2_API_V1(val value: String) {
     Build("/v1/build.json"),
     Colors("/v1/colors.json"),
     Continents("/v1/continents.json"),
