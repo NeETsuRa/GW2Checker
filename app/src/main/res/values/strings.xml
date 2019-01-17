@@ -7,28 +7,4 @@
     <string name="action_settings">Settings</string>
 
     <string name="APIUrl">https://api.guildwars2.com</string>
-    //API Version 1 = https://wiki.guildwars2.com/wiki/API:1
-    <string name="V1_Build">/v1/build.json</string>
-    <string name="V1_Colors">/v1/colors.json</string>
-    <string name="V1_Continents">/v1/continents.json</string>
-    <string name="V1_Event_details">/v1/event_details.json</string>
-    <string name="V1_Event_names">/v1/event_names.json</string>
-    <string name="V1_Events">/v1/events.json</string>
-    <string name="V1_Files">/v1/files.json</string>
-    <string name="V1_Guild_details">/v1/guild_details.json</string>
-    <string name="V1_Item_details">/v1/item_details.json</string>
-    <string name="V1_Items">/v1/items.json</string>
-    <string name="V1_Map_floor">/v1/map_floor.json</string>
-    <string name="V1_Map_names">/v1/map_names.json</string>
-    <string name="V1_Maps">/v1/maps.json</string>
-    <string name="V1_Recipe_details">/v1/recipe_details.json</string>
-    <string name="V1_Recipes">/v1/recipes.json</string>
-    <string name="V1_Skin_details">/v1/skin_details.json</string>
-    <string name="V1_Skins">/v1/skins.json</string>
-    <string name="V1_World_names">/v1/world_names.json</string>
-    <string name="V1_wvw_Match_details">/v1/wvw/match_details.json</string>
-    <string name="V1_wvw_Matches">/v1/wvw/matches.json</string>
-    <string name="V1_wvw_Objective_names">/v1/wvw/objective_names.json</string>
-    //API Version 2
-
 </resources>

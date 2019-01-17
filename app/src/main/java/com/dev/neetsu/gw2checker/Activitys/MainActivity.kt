@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import com.dev.neetsu.gw2checker.R
+import enums.GW2_API_V1
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
@@ -64,7 +65,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_camera -> {
-                var response = HttpRequest().get(token,resources.getString(R.string.APIUrl) + resources.getString(R.string.V1_Build))
+                var response = HttpRequest().get(token,resources.getString(R.string.APIUrl) + GW2_API_V1.Build)
                 val text: TextView = findViewById(R.id.MainText)
                 text.setText(response)
             }
