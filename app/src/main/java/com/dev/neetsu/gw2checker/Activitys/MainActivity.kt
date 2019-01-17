@@ -52,7 +52,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems)
         list.adapter = adapter
 
-        val context = this
         list.setOnItemClickListener { _, _, position, _ ->
             val selected = listItems[position]
             var response = HttpRequest().get(token,Properties.APIUrl.value + selected.toString())
@@ -112,6 +111,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_send -> {
 
+            }
+            R.id.action_settings ->{
+                nav_view.inflateMenu(R.menu.activity_main_drawer)
             }
         }
 
