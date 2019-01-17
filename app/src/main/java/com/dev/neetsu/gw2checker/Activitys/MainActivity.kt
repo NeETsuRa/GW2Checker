@@ -6,7 +6,6 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
@@ -66,7 +65,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.nav_camera -> {
                 var response = HttpRequest().get(token,resources.getString(R.string.APIUrl) + resources.getString(R.string.V1_Build))
-                val text: TextView = findViewById(R.id.MainText) as TextView
+                val text: TextView = findViewById(R.id.MainText)
                 text.setText(response)
             }
             R.id.nav_gallery -> {

@@ -1,8 +1,6 @@
 package webAccess
 
-import android.content.Context
 import android.util.Log
-import com.dev.neetsu.gw2checker.R
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -13,14 +11,14 @@ import java.io.IOException
  * Created by nejc.ravnjak on 16.01.19.
  */
 class HttpRequest {
-    public val JSON = MediaType.get("application/json; charset=utf-8")
-    var client = OkHttpClient()
+    private val JSON = MediaType.get("application/json; charset=utf-8")
+    private var client = OkHttpClient()
 
     fun get(token: String, url: String): String {
         var response = ""
         val thread = Thread(Runnable {
             try {
-                response = HttpRequest().getF(token,url)
+                response = getF(token,url)
                 Log.d("HttpRequest", "webAccess:HttpRequest:get:: " + response)
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -36,7 +34,7 @@ class HttpRequest {
         var response = ""
         val thread = Thread(Runnable {
             try {
-                response = HttpRequest().postF(token,url,json)
+                response = postF(token,url,json)
                 Log.d("HttpRequest", "webAccess:HttpRequest:post:: " + response)
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -71,7 +69,7 @@ class HttpRequest {
                 return resp
             }
         } catch (e: IOException) {
-            e.printStackTrace()
+            handleError(e);
         }
         return ""
     }
@@ -85,8 +83,12 @@ class HttpRequest {
                 return resp
             }
         } catch (e: IOException) {
-            e.printStackTrace()
+            handleError(e);
         }
         return ""
+    }
+
+    private fun handleError(e: IOException) {
+        e.printStackTrace()
     }
 }
