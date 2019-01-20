@@ -18,6 +18,7 @@ import enums.GW2_API_V2
 import enums.Properties
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import models.Account
 
 import webAccess.HttpRequest
 
