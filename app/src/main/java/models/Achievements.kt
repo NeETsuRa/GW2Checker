@@ -4,6 +4,7 @@ import enums.GW2_API_V2
 import enums.Properties
 
 /*
+Fields:
      id - The achievement id.
     icon (string, optional) – The achievement icon.
     name (string) – The achievement name.
@@ -62,7 +63,7 @@ Optional Parameters:
 Call Options:
     https://api.guildwars2.com/v2/achievements?ids=1840,910,2258
     https://api.guildwars2.com/v2/achievements?ids=1840,910,2258&lang=de
-    https://api.guildwars2.com/v2/achievements (List)
+    https://api.guildwars2.com/v2/achievements (List) --> No fields just all Achievements as list
  */
 object Achievements {
     //Authorization: none

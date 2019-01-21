@@ -4,6 +4,7 @@ import enums.GW2_API_V2
 import enums.Properties
 
 /*
+Fields:
     id (string) – The unique persistent account GUID.
     age (number) - The age of the account in seconds.
     name (string) – The unique account name with numerical suffix. It is possible that the name change. Do not rely on the name, use id instead.[1]
@@ -54,6 +55,8 @@ Connected Endpoints:
 */
 
 /*
+Optional Parameters:
+    None
 Call Options:
     https://api.guildwars2.com/v2/account
     Authorization: Bearer <API key>
