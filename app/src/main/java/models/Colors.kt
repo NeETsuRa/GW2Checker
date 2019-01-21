@@ -1,4 +1,8 @@
 package models
+
+import enums.GW2_API_V2
+import enums.Properties
+
 /*
 Fields:
 
@@ -38,4 +42,7 @@ Call Options:
     https://api.guildwars2.com/v2/colors/10?lang=en
 */
 object Colors {
+    //Authorization: none
+    val url = ""+ Properties.APIUrl+ GW2_API_V2.colors
+
 }

@@ -27,5 +27,5 @@ Call Options:
 */
 object Characters {
     //Authorization: Bearer <API key>
-    val url = ""+ Properties.APIUrl+ GW2_API_V2.characters;
+    val url = ""+ Properties.APIUrl+ GW2_API_V2.characters
 }

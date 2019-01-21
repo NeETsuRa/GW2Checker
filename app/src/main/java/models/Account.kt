@@ -64,6 +64,6 @@ Call Options:
 
 object Account {
     //Authorization: Bearer <API key>
-    val url = ""+Properties.APIUrl+GW2_API_V2.account;
+    val url = ""+Properties.APIUrl+GW2_API_V2.account
 
 }

@@ -20,5 +20,5 @@ Call Options:
 */
 object BackStory {
     //Authorization: none
-    val url = ""+ Properties.APIUrl+ GW2_API_V2.backstory;
+    val url = ""+ Properties.APIUrl+ GW2_API_V2.backstory
 }
