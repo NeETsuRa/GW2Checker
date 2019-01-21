@@ -1,6 +1,8 @@
 package models
 
 import enums.GW2_API_V2
+import enums.Properties
+
 /*
     id (string) – The unique persistent account GUID.
     age (number) - The age of the account in seconds.
@@ -59,6 +61,6 @@ Call Options:
 
 object Account {
     //Authorization: Bearer <API key>
-    val endpoint = GW2_API_V2.account;
+    val url = ""+Properties.APIUrl+GW2_API_V2.account;
 
 }
