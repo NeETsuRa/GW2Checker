@@ -1,5 +1,6 @@
 package models
 
+import com.google.gson.Gson
 import enums.GW2_API_V2
 import enums.Properties
 import webAccess.HttpRequest
@@ -62,31 +63,97 @@ Call Options:
     https://api.guildwars2.com/v2/account
     Authorization: Bearer <API key>
 */
-
-object Account {
+class Account {
     //Authorization: Bearer <API key>
-    val url = ""+Properties.APIUrl+GW2_API_V2.account
+    val url = Properties.APIUrl.value+GW2_API_V2.account.value
     val token = "18DB49E1-BF7C-5345-8C63-3E5CB7FAC342F9B6560C-D84D-4B72-B7A0-6B2A951F3E22"
 
-    val id ="" //(string) – The unique persistent account GUID.
-    val age = 0 // (number) - The age of the account in seconds.
-    val name = "" // (string) – The unique account name with numerical suffix. It is possible that the name change. Do not rely on the name, use id instead.[1]
-    val world = 0 // (number) – The id of the home world the account is assigned to. Can be resolved against /v2/worlds.
-    val guilds = listOf<String>() //(array) – A list of guilds assigned to the given account.
-    val guild_leader = listOf<String>() //(array) – A list of guilds the account is leader of.
-    val created = "" //(string) – An ISO-8601 standard timestamp of when the account was created.
-    val access  = listOf<String>() //(array) – A list of what content this account has access to. Possible values: Account_Access_List
-    val commander = false // (boolean) – True if the player has bought a commander tag.
-    val fractal_level = 0 // (number) – The account's personal fractal reward level. Requires the additional progression scope.
-    val daily_ap = 0 //(number) – The daily AP the account has. Requires the additional progression scope.
-    val monthly_ap = 0 //(number) – The monthly AP the account has. Requires the additional progression scope.
-    val wvw_rank = 0 //(number) – The account's personal wvw rank. Requires the additional progression scope.
+    var id : String? = null //(string) – The unique persistent account GUID.
+    var age : Int? = null // (number) - The age of the account in seconds.
+    var name : String? = null// (string) – The unique account name with numerical suffix. It is possible that the name change. Do not rely on the name, use id instead.[1]
+    var world : Int? = null // (number) – The id of the home world the account is assigned to. Can be resolved against /v2/worlds.
+    var guilds : List<String>? = null //(array) – A list of guilds assigned to the given account.
+    var guild_leader : List<String>? = null //(array) – A list of guilds the account is leader of.
+    var created : String? = null //(string) – An ISO-8601 standard timestamp of when the account was created.
+    var access : List<String>? = null //(array) – A list of what content this account has access to. Possible values: Account_Access_List
+    var commander : String? = null // (boolean) – True if the player has bought a commander tag.
+    var fractal_level : Int? = null  // (number) – The account's personal fractal reward level. Requires the additional progression scope.
+    var daily_ap : Int? = null  //(number) – The daily AP the account has. Requires the additional progression scope.
+    var monthly_ap : Int? = null //(number) – The monthly AP the account has. Requires the additional progression scope.
+    var wvw_rank : Int? = null //(number) – The account's personal wvw rank. Requires the additional progression scope.
 
+    constructor(){}
 
-
-    fun setAccount():Account{
-        var response = HttpRequest().get(token, url)
-
-        return Account
+    constructor(id: String?, age: Int?, name: String?, world: Int?, guilds: List<String>?, guild_leader: List<String>?, created: String?, access: List<String>?, commander: String?, fractal_level: Int?, daily_ap: Int?, monthly_ap: Int?, wvw_rank: Int?) {
+        this.id = id
+        this.age = age
+        this.name = name
+        this.world = world
+        this.guilds = guilds
+        this.guild_leader = guild_leader
+        this.created = created
+        this.access = access
+        this.commander = commander
+        this.fractal_level = fractal_level
+        this.daily_ap = daily_ap
+        this.monthly_ap = monthly_ap
+        this.wvw_rank = wvw_rank
     }
+
+    constructor(acc:Account){
+        this.id = acc.id
+        this.age = acc.age
+        this.name = acc.name
+        this.world = acc.world
+        this.guilds = acc.guilds
+        this.guild_leader = acc.guild_leader
+        this.created = acc.created
+        this.access = acc.access
+        this.commander = acc.commander
+        this.fractal_level = acc.fractal_level
+        this.daily_ap = acc.daily_ap
+        this.monthly_ap = acc.monthly_ap
+        this.wvw_rank = acc.wvw_rank
+    }
+
+    fun initialiseAccount(){
+        var gson = Gson()
+        var result = gson?.fromJson(HttpRequest().get(token,url), Account::class.java)
+
+        this.id = result.id
+        this.age = result.age
+        this.name = result.name
+        this.world = result.world
+        this.guilds = result.guilds
+        this.guild_leader = result.guild_leader
+        this.created = result.created
+        this.access = result.access
+        this.commander = result.commander
+        this.fractal_level = result.fractal_level
+        this.daily_ap = result.daily_ap
+        this.monthly_ap = result.monthly_ap
+        this.wvw_rank = result.wvw_rank
+
+    }
+
+    override fun toString(): String {
+        return "Account(\n" +
+                "  url='$url',\n" +
+                "   token='$token',\n" +
+                "   id=$id,\n" +
+                "   age=$age,\n" +
+                "   name=$name,\n" +
+                "   world=$world,\n" +
+                "   guilds=$guilds,\n" +
+                "   guild_leader=$guild_leader,\n" +
+                "   created=$created,\n" +
+                "   access=$access,\n" +
+                "   commander=$commander,\n" +
+                "   fractal_level=$fractal_level,\n" +
+                "   daily_ap=$daily_ap,\n" +
+                "   monthly_ap=$monthly_ap,\n" +
+                "   wvw_rank=$wvw_rank)"
+    }
+
+
 }

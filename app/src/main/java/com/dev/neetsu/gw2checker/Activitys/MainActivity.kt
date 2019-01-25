@@ -99,7 +99,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 text.setText(response)
             }
             R.id.nav_gallery -> {
-
+                var acc = Account()
+                acc.initialiseAccount()
+                val text: TextView = findViewById(R.id.MainText)
+                text.setText(acc.toString())
             }
             R.id.nav_slideshow -> {
 
