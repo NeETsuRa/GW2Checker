@@ -2,6 +2,7 @@ package models
 
 import enums.GW2_API_V2
 import enums.Properties
+import webAccess.HttpRequest
 
 /*
 Fields:
@@ -65,6 +66,7 @@ Call Options:
 object Account {
     //Authorization: Bearer <API key>
     val url = ""+Properties.APIUrl+GW2_API_V2.account
+    val token = "18DB49E1-BF7C-5345-8C63-3E5CB7FAC342F9B6560C-D84D-4B72-B7A0-6B2A951F3E22"
 
     val id ="" //(string) – The unique persistent account GUID.
     val age = 0 // (number) - The age of the account in seconds.
@@ -79,4 +81,12 @@ object Account {
     val daily_ap = 0 //(number) – The daily AP the account has. Requires the additional progression scope.
     val monthly_ap = 0 //(number) – The monthly AP the account has. Requires the additional progression scope.
     val wvw_rank = 0 //(number) – The account's personal wvw rank. Requires the additional progression scope.
+
+
+
+    fun setAccount():Account{
+        var response = HttpRequest().get(token, url)
+
+        return Account
+    }
 }
