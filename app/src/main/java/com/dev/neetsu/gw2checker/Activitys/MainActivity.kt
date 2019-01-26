@@ -101,6 +101,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_gallery -> {
                 var acc = Account()
                 acc.initialiseAccount()
+                acc.getAchievements()
                 val text: TextView = findViewById(R.id.MainText)
                 text.setText(acc.toString())
             }

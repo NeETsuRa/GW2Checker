@@ -3,6 +3,7 @@ package models
 import com.google.gson.Gson
 import enums.GW2_API_V2
 import enums.Properties
+import models.Subelements.AccountAchievements
 import webAccess.HttpRequest
 
 /*
@@ -68,23 +69,27 @@ class Account {
     val url = Properties.APIUrl.value+GW2_API_V2.account.value
     val token = "18DB49E1-BF7C-5345-8C63-3E5CB7FAC342F9B6560C-D84D-4B72-B7A0-6B2A951F3E22"
 
+    //MainParameters
     var id : String? = null //(string) – The unique persistent account GUID.
     var age : Int? = null // (number) - The age of the account in seconds.
     var name : String? = null// (string) – The unique account name with numerical suffix. It is possible that the name change. Do not rely on the name, use id instead.[1]
     var world : Int? = null // (number) – The id of the home world the account is assigned to. Can be resolved against /v2/worlds.
-    var guilds : List<String>? = null //(array) – A list of guilds assigned to the given account.
-    var guild_leader : List<String>? = null //(array) – A list of guilds the account is leader of.
+    var guilds : MutableList<String>? = mutableListOf<String>() //(array) – A list of guilds assigned to the given account.
+    var guild_leader : MutableList<String>? = mutableListOf<String>() //(array) – A list of guilds the account is leader of.
     var created : String? = null //(string) – An ISO-8601 standard timestamp of when the account was created.
-    var access : List<String>? = null //(array) – A list of what content this account has access to. Possible values: Account_Access_List
+    var access : MutableList<String>? = mutableListOf<String>() //(array) – A list of what content this account has access to. Possible values: Account_Access_List
     var commander : String? = null // (boolean) – True if the player has bought a commander tag.
     var fractal_level : Int? = null  // (number) – The account's personal fractal reward level. Requires the additional progression scope.
     var daily_ap : Int? = null  //(number) – The daily AP the account has. Requires the additional progression scope.
     var monthly_ap : Int? = null //(number) – The monthly AP the account has. Requires the additional progression scope.
     var wvw_rank : Int? = null //(number) – The account's personal wvw rank. Requires the additional progression scope.
 
+    //ConnectedParameters
+    var accountAchievements : MutableList<AccountAchievements>? = mutableListOf<AccountAchievements>() // /v2/account/achievements
+
     constructor(){}
 
-    constructor(id: String?, age: Int?, name: String?, world: Int?, guilds: List<String>?, guild_leader: List<String>?, created: String?, access: List<String>?, commander: String?, fractal_level: Int?, daily_ap: Int?, monthly_ap: Int?, wvw_rank: Int?) {
+    constructor(id: String?, age: Int?, name: String?, world: Int?, guilds: MutableList<String>?, guild_leader: MutableList<String>?, created: String?, access: MutableList<String>?, commander: String?, fractal_level: Int?, daily_ap: Int?, monthly_ap: Int?, wvw_rank: Int?) {
         this.id = id
         this.age = age
         this.name = name
@@ -136,23 +141,31 @@ class Account {
 
     }
 
+    fun getAchievements(){
+        var a : AccountAchievements = AccountAchievements()
+        a.initAccountAchievements()
+    }
+
     override fun toString(): String {
         return "Account(\n" +
                 "  url='$url',\n" +
-                "   token='$token',\n" +
-                "   id=$id,\n" +
-                "   age=$age,\n" +
-                "   name=$name,\n" +
-                "   world=$world,\n" +
-                "   guilds=$guilds,\n" +
-                "   guild_leader=$guild_leader,\n" +
-                "   created=$created,\n" +
-                "   access=$access,\n" +
-                "   commander=$commander,\n" +
-                "   fractal_level=$fractal_level,\n" +
-                "   daily_ap=$daily_ap,\n" +
-                "   monthly_ap=$monthly_ap,\n" +
-                "   wvw_rank=$wvw_rank)"
+                "  token='$token',\n" +
+                "  id=$id,\n" +
+                "  age=$age,\n" +
+                "  name=$name,\n" +
+                "  world=$world,\n" +
+                "  guilds=$guilds,\n" +
+                "  guild_leader=$guild_leader,\n" +
+                "  created=$created,\n" +
+                "  access=$access,\n" +
+                "  commander=$commander,\n" +
+                "  fractal_level=$fractal_level,\n" +
+                "  daily_ap=$daily_ap,\n" +
+                "  monthly_ap=$monthly_ap,\n" +
+                "  wvw_rank=$wvw_rank\n" +
+                ")\n" +
+                "\n" +
+                "${accountAchievements.toString()} \n"
     }
 
 
