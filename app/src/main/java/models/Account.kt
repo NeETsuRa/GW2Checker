@@ -143,7 +143,7 @@ class Account {
 
     fun getAchievements(){
         var a : AccountAchievements = AccountAchievements()
-        a.initAccountAchievements()
+        accountAchievements = a.initAccountAchievements()
     }
 
     override fun toString(): String {

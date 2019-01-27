@@ -1,10 +1,11 @@
 package models.Subelements
 
+import android.util.Log
 import com.google.gson.Gson
 import enums.GW2_API_V2
 import enums.Properties
-import models.Account
 import webAccess.HttpRequest
+import java.lang.Exception
 
 /*
     id (number) – The achievement id.
@@ -49,21 +50,31 @@ class AccountAchievements {
         this.unlocked = acc.unlocked
     }
 
-    fun initAccountAchievements(){
+    fun initAccountAchievements(): MutableList<AccountAchievements>? {
+        var accountAchievements : MutableList<AccountAchievements>? = mutableListOf<AccountAchievements>()
         var gson = Gson()
         var response = HttpRequest().get(token,url)
-        /*
         response = response.substring(2, response.length - 1)
 
         var list = response.split("},")
         list.forEach{
-            var i = it + "}"
-            var result = gson?.fromJson(i, AccountAchievements::class.java)
-        }*/
+            var i = it
+            if (!it.equals(list.last()))
+                i += "}"
+            try {
+                var result = gson?.fromJson(i, AccountAchievements::class.java)
+                accountAchievements?.add(result)
+            } catch (e:Exception){
+                e.printStackTrace()
+                Log.d("initAccountAchievements", "Error: $i")
+            }
+        }
+        return accountAchievements
     }
-
 
     override fun toString(): String {
-        return "AccountAchievements()"
+        return "AccountAchievements(id=$id, done=$done)\n"
     }
+
+
 }
