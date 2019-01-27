@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import enums.GW2_API_V2
 import enums.Properties
 import models.Subelements.AccountAchievements
+import models.Subelements.AccountBank
 import webAccess.HttpRequest
 
 /*
@@ -30,8 +31,8 @@ Fields:
 
 /*
 Connected Endpoints:
-    /v2/account/achievements
-    /v2/account/bank
+    (D) /v2/account/achievements
+    (D) /v2/account/bank
     /v2/account/dungeons
     /v2/account/dyes
     /v2/account/finishers
@@ -86,6 +87,7 @@ class Account {
 
     //ConnectedParameters
     var accountAchievements : MutableList<AccountAchievements>? = mutableListOf<AccountAchievements>() // /v2/account/achievements
+    var accountBank : MutableList<AccountBank>? = mutableListOf<AccountBank>() // /v2/account/bank
 
     constructor(){}
 
@@ -146,6 +148,11 @@ class Account {
         accountAchievements = a.initAccountAchievements()
     }
 
+    fun getBank(){
+        var a : AccountBank = AccountBank()
+        accountBank = a.initAccountBank()
+    }
+
     override fun toString(): String {
         return "Account(\n" +
                 "  url='$url',\n" +
@@ -165,7 +172,8 @@ class Account {
                 "  wvw_rank=$wvw_rank\n" +
                 ")\n" +
                 "\n" +
-                "${accountAchievements.toString()} \n"
+                "${accountAchievements.toString()} \n"+
+                "${accountBank.toString()} \n"
     }
 
 
