@@ -80,7 +80,7 @@ class AccountBank {
     }
 
     override fun toString(): String {
-        return "AccountBank(id=$id)\n"
+        return "AccountBank(id=$id, Count=$count)\n"
     }
 
 
