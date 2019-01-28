@@ -31,8 +31,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+            var acc = Account()
+            acc.initialiseAccount()
+            //acc.getAchievements()
+            //acc.getBank()
+            val text: TextView = findViewById(R.id.MainText)
+            text.setText(acc.toString())
         }
 
 
@@ -101,8 +105,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_gallery -> {
                 var acc = Account()
                 acc.initialiseAccount()
-                //acc.getAchievements()
-                //acc.getBank()
+                acc.getAchievements()
+                acc.getBank()
                 val text: TextView = findViewById(R.id.MainText)
                 text.setText(acc.toString())
             }
