@@ -88,6 +88,7 @@ class Account {
     //ConnectedParameters
     var accountAchievements : MutableList<AccountAchievements>? = mutableListOf<AccountAchievements>() // /v2/account/achievements
     var accountBank : MutableList<AccountBank>? = mutableListOf<AccountBank>() // /v2/account/bank
+    var accountDungeons : List<String>? = mutableListOf<String>()// /v2/account/dungeons
 
     constructor(){}
 
@@ -153,6 +154,18 @@ class Account {
         accountBank = a.initAccountBank()
     }
 
+    fun getDungeons(){
+        val dungeonsUrl = Properties.APIUrl.value+GW2_API_V2.account_dungeons.value
+        var result = HttpRequest().get(token,dungeonsUrl)
+        if(!result.equals("[]")){
+            result = result.replace("\n","")
+            result = result.replace("\"","")
+            result = result.replace(" ","")
+            result = result.substring(1, result.length - 1)
+            accountDungeons = result.split(",")
+        }
+    }
+
     override fun toString(): String {
         return "Account(\n" +
                 "  url='$url',\n" +
@@ -173,7 +186,8 @@ class Account {
                 ")\n" +
                 "\n" +
                 "${accountAchievements.toString()} \n"+
-                "${accountBank.toString()} \n"
+                "${accountBank.toString()} \n"+
+                "${accountDungeons.toString()} \n"
     }
 
 

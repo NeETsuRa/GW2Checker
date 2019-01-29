@@ -34,7 +34,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             var acc = Account()
             acc.initialiseAccount()
             //acc.getAchievements()
-            //acc.getBank()
+            //acc.getBank
+            //acc.getDungeons()
             val text: TextView = findViewById(R.id.MainText)
             text.setText(acc.toString())
         }
