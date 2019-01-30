@@ -33,7 +33,7 @@ Fields:
 Connected Endpoints:
     (D) /v2/account/achievements
     (D) /v2/account/bank
-    /v2/account/dungeons
+    (D) /v2/account/dungeons
     /v2/account/dyes
     /v2/account/finishers
     /v2/account/gliders
