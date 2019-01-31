@@ -73,7 +73,7 @@ class AccountBank {
                 accountBank?.add(result)
             } catch (e: Exception){
                 e.printStackTrace()
-                Log.d("initAccountAchievements", "Error: $i")
+                Log.d("initAccountBank", "Error: $i")
             }
         }
         return accountBank

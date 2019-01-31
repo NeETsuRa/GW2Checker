@@ -5,6 +5,7 @@ import enums.GW2_API_V2
 import enums.Properties
 import models.Subelements.AccountAchievements
 import models.Subelements.AccountBank
+import models.Subelements.AccountFinisher
 import webAccess.HttpRequest
 
 /*
@@ -34,8 +35,8 @@ Connected Endpoints:
     (D) /v2/account/achievements
     (D) /v2/account/bank
     (D) /v2/account/dungeons
-    /v2/account/dyes
-    /v2/account/finishers
+    (D) /v2/account/dyes
+    (D) /v2/account/finishers
     /v2/account/gliders
     /v2/account/home
         /v2/account/home/cats
@@ -90,6 +91,7 @@ class Account {
     var accountBank : MutableList<AccountBank>? = mutableListOf<AccountBank>() // /v2/account/bank
     var accountDungeons : List<String>? = mutableListOf<String>()// /v2/account/dungeons
     var accountDyes : List<String>? = mutableListOf<String>()// /v2/account/dyes
+    var accountFinishers : MutableList<AccountFinisher>? = mutableListOf<AccountFinisher>() // /v2/account/finishers
 
     constructor(){}
 
@@ -155,6 +157,11 @@ class Account {
         accountBank = a.initAccountBank()
     }
 
+    fun getFinishers(){
+        var a : AccountFinisher = AccountFinisher()
+        accountFinishers = a.initAccountFinisher()
+    }
+
     fun getDungeons(){
         val dungeonsUrl = Properties.APIUrl.value+GW2_API_V2.account_dungeons.value
         var result = HttpRequest().get(token,dungeonsUrl)
@@ -200,7 +207,8 @@ class Account {
                 "${accountAchievements.toString()} \n"+
                 "${accountBank.toString()} \n"+
                 "${accountDungeons.toString()} \n"+
-                "${accountDyes.toString()} \n"
+                "${accountDyes.toString()} \n"+
+                "${accountFinishers.toString()} \n"
     }
 
 

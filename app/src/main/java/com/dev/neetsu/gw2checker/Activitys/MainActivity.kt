@@ -36,7 +36,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             //acc.getAchievements()
             //acc.getBank()
             //acc.getDungeons()
-            acc.getDyes()
+            //acc.getDyes()
+            acc.getFinishers()
             val text: TextView = findViewById(R.id.MainText)
             text.setText(acc.toString())
         }
@@ -111,6 +112,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 acc.getBank()
                 acc.getDungeons()
                 acc.getDyes()
+                acc.getFinishers()
                 val text: TextView = findViewById(R.id.MainText)
                 text.setText(acc.toString())
             }
