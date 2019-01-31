@@ -3,9 +3,7 @@ package models
 import com.google.gson.Gson
 import enums.GW2_API_V2
 import enums.Properties
-import models.Subelements.AccountAchievements
-import models.Subelements.AccountBank
-import models.Subelements.AccountFinisher
+import models.Subelements.*
 import webAccess.HttpRequest
 
 /*
@@ -37,13 +35,13 @@ Connected Endpoints:
     (D) /v2/account/dungeons
     (D) /v2/account/dyes
     (D) /v2/account/finishers
-    /v2/account/gliders
-    /v2/account/home
-        /v2/account/home/cats
-        /v2/account/home/nodes
-    /v2/account/inventory
-    /v2/account/mailcarriers
-    /v2/account/masteries
+    (D) /v2/account/gliders
+    (D) /v2/account/home
+    (D)     /v2/account/home/cats
+    (D)     /v2/account/home/nodes
+    (D) /v2/account/inventory
+    (D) /v2/account/mailcarriers
+    (D) /v2/account/masteries
     /v2/account/mastery/points
     /v2/account/materials
     /v2/account/minis
@@ -69,7 +67,6 @@ Call Options:
 class Account {
     //Authorization: Bearer <API key>
     val url = Properties.APIUrl.value+GW2_API_V2.account.value
-    val token = "18DB49E1-BF7C-5345-8C63-3E5CB7FAC342F9B6560C-D84D-4B72-B7A0-6B2A951F3E22"
 
     //MainParameters
     var id : String? = null //(string) – The unique persistent account GUID.
@@ -90,8 +87,13 @@ class Account {
     var accountAchievements : MutableList<AccountAchievements>? = mutableListOf<AccountAchievements>() // /v2/account/achievements
     var accountBank : MutableList<AccountBank>? = mutableListOf<AccountBank>() // /v2/account/bank
     var accountDungeons : List<String>? = mutableListOf<String>()// /v2/account/dungeons
-    var accountDyes : List<String>? = mutableListOf<String>()// /v2/account/dyes
+    var accountDyes : List<Int>? = mutableListOf<Int>()// /v2/account/dyes
     var accountFinishers : MutableList<AccountFinisher>? = mutableListOf<AccountFinisher>() // /v2/account/finishers
+    var accountGliders : List<Int>? = mutableListOf<Int>()// /v2/account/gliders
+    var accountHome : AccountHome? = AccountHome() // /v2/account/home
+    var accountInventory : MutableList<AccountInventory>? = mutableListOf<AccountInventory>() // /v2/account/inventory
+    var accountMailcarriers : List<Int>? = mutableListOf<Int>()// /v2/account/mailcarriers
+    var accountMasteries : MutableList<AccountMasteries>? = mutableListOf<AccountMasteries>() //  /v2/account/masteries
 
     constructor(){}
 
@@ -129,7 +131,7 @@ class Account {
 
     fun initialiseAccount(){
         var gson = Gson()
-        var result = gson?.fromJson(HttpRequest().get(token,url), Account::class.java)
+        var result = gson?.fromJson(HttpRequest().get(Properties.token.value,url), Account::class.java)
 
         this.id = result.id
         this.age = result.age
@@ -147,6 +149,10 @@ class Account {
 
     }
 
+    fun getHome(){
+        accountHome = accountHome?.initHome()
+    }
+
     fun getAchievements(){
         var a : AccountAchievements = AccountAchievements()
         accountAchievements = a.initAccountAchievements()
@@ -157,38 +163,69 @@ class Account {
         accountBank = a.initAccountBank()
     }
 
+    fun getInventory(){
+        var a : AccountInventory = AccountInventory()
+        accountInventory = a.initAccountInventory()
+    }
+
     fun getFinishers(){
         var a : AccountFinisher = AccountFinisher()
         accountFinishers = a.initAccountFinisher()
     }
 
+    fun getMasteries(){
+        var a : AccountMasteries = AccountMasteries()
+        accountMasteries = a.initAccountMasteries()
+    }
+
     fun getDungeons(){
         val dungeonsUrl = Properties.APIUrl.value+GW2_API_V2.account_dungeons.value
-        var result = HttpRequest().get(token,dungeonsUrl)
+        var result = HttpRequest().get(Properties.token.value,dungeonsUrl)
         if(!result.equals("[]")){
             result = result.replace("\n","")
             result = result.replace("\"","")
             result = result.replace(" ","")
             result = result.substring(1, result.length - 1)
-            accountDyes = result.split(",")
+            accountDungeons = result.split(",")
         }
     }
 
     fun getDyes(){
         val dyesUrl = Properties.APIUrl.value+GW2_API_V2.account_dyes.value
-        var result = HttpRequest().get(token,dyesUrl)
+        var result = HttpRequest().get(Properties.token.value,dyesUrl)
         if(!result.equals("[]")){
             result = result.replace("\n","")
             result = result.replace(" ","")
             result = result.substring(1, result.length - 1)
-            accountDyes = result.split(",")
+            accountDyes = result.split(",").map { it.toInt() }
+        }
+    }
+
+    fun getGliders(){
+        val glidersUrl = Properties.APIUrl.value+GW2_API_V2.account_gliders.value
+        var result = HttpRequest().get(Properties.token.value,glidersUrl)
+        if(!result.equals("[]")){
+            result = result.replace("\n","")
+            result = result.replace(" ","")
+            result = result.substring(1, result.length - 1)
+            accountGliders = result.split(",").map { it.toInt() }
+        }
+    }
+
+    fun getMailcarriers(){
+        val glidersUrl = Properties.APIUrl.value+GW2_API_V2.account_mailcarriers.value
+        var result = HttpRequest().get(Properties.token.value,glidersUrl)
+        if(!result.equals("[]")){
+            result = result.replace("\n","")
+            result = result.replace(" ","")
+            result = result.substring(1, result.length - 1)
+            accountMailcarriers = result.split(",").map { it.toInt() }
         }
     }
 
     override fun toString(): String {
         return "Account(\n" +
                 "  url='$url',\n" +
-                "  token='$token',\n" +
                 "  id=$id,\n" +
                 "  age=$age,\n" +
                 "  name=$name,\n" +
@@ -208,7 +245,12 @@ class Account {
                 "${accountBank.toString()} \n"+
                 "${accountDungeons.toString()} \n"+
                 "${accountDyes.toString()} \n"+
-                "${accountFinishers.toString()} \n"
+                "${accountFinishers.toString()} \n"+
+                "${accountGliders.toString()} \n"+
+                "${accountHome.toString()} \n"+
+                "${accountInventory.toString()} \n"+
+                "${accountMailcarriers.toString()} \n"+
+                "${accountMasteries.toString()} \n"
     }
 
 

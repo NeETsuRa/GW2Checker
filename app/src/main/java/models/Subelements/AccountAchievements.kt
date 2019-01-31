@@ -18,7 +18,6 @@ import java.lang.Exception
 */
 class AccountAchievements {
     val url = Properties.APIUrl.value+ GW2_API_V2.account_achievements.value
-    val token = "18DB49E1-BF7C-5345-8C63-3E5CB7FAC342F9B6560C-D84D-4B72-B7A0-6B2A951F3E22"
 
     var id : Int? = null //(number) – The achievement id.
     var bits : MutableList<String>? = mutableListOf<String>() //(array, optional) – This attribute contains an array of numbers, giving more specific information on the progress for the achievement. The meaning of each value varies with each achievement.
@@ -53,20 +52,22 @@ class AccountAchievements {
     fun initAccountAchievements(): MutableList<AccountAchievements>? {
         var accountAchievements : MutableList<AccountAchievements>? = mutableListOf<AccountAchievements>()
         var gson = Gson()
-        var response = HttpRequest().get(token,url)
-        response = response.substring(2, response.length - 1)
+        var response = HttpRequest().get(Properties.token.value,url)
+        if(!response.equals("[]")) {
+            response = response.substring(2, response.length - 1)
 
-        var list = response.split("},")
-        list.forEach{
-            var i = it
-            if (!it.equals(list.last()))
-                i += "}"
-            try {
-                var result = gson?.fromJson(i, AccountAchievements::class.java)
-                accountAchievements?.add(result)
-            } catch (e:Exception){
-                e.printStackTrace()
-                Log.d("initAccountAchievements", "Error: $i")
+            var list = response.split("},")
+            list.forEach {
+                var i = it
+                if (!it.equals(list.last()))
+                    i += "}"
+                try {
+                    var result = gson?.fromJson(i, AccountAchievements::class.java)
+                    accountAchievements?.add(result)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Log.d("initAccountAchievements", "Error: $i")
+                }
             }
         }
         return accountAchievements

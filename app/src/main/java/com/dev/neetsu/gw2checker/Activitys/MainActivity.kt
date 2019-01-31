@@ -23,7 +23,6 @@ import models.Account
 import webAccess.HttpRequest
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    val token = "18DB49E1-BF7C-5345-8C63-3E5CB7FAC342F9B6560C-D84D-4B72-B7A0-6B2A951F3E22"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +36,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             //acc.getBank()
             //acc.getDungeons()
             //acc.getDyes()
-            acc.getFinishers()
+            //acc.getFinishers()
+            //acc.getGliders()
+            //acc.getHome()
+            //acc.getInventory()
+            //acc.getMailcarriers()
+            acc.getMasteries()
             val text: TextView = findViewById(R.id.MainText)
             text.setText(acc.toString())
         }
@@ -62,7 +66,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         list.setOnItemClickListener { _, _, position, _ ->
             val selected = listItems[position]
-            var response = HttpRequest().get(token,Properties.APIUrl.value + selected.toString())
+            var response = HttpRequest().get(Properties.token.value,Properties.APIUrl.value + selected.toString())
             text.setText(response)
         }
         val toggle = ActionBarDrawerToggle(
@@ -101,7 +105,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_camera -> {
-                var response = HttpRequest().get(token,Properties.APIUrl.value + GW2_API_V1.Build.value)
+                var response = HttpRequest().get(Properties.token.value,Properties.APIUrl.value + GW2_API_V1.Build.value)
                 val text: TextView = findViewById(R.id.MainText)
                 text.setText(response)
             }
@@ -113,6 +117,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 acc.getDungeons()
                 acc.getDyes()
                 acc.getFinishers()
+                acc.getGliders()
+                acc.getHome()
+                acc.getInventory()
+                acc.getMailcarriers()
+                acc.getMasteries()
                 val text: TextView = findViewById(R.id.MainText)
                 text.setText(acc.toString())
             }

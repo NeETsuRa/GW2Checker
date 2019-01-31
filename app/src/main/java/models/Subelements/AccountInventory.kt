@@ -17,8 +17,10 @@ infusions (array, optional) – An array of item IDs for each infusion applied t
 binding (string, optional) – The current binding of the item. Either Account or Character if present.
 bound_to (string, optional) – If binding is Character, this field tells which character it is bound to.
 */
-class AccountBank {
-    val url = Properties.APIUrl.value+ GW2_API_V2.account_bank.value
+
+class AccountInventory {
+
+    val url = Properties.APIUrl.value+ GW2_API_V2.account_inventory.value
 
     var id : Int? = null //(number) – The item's ID.
     var count : Int? = null // (number) – The amount of items in the item stack.
@@ -41,19 +43,19 @@ class AccountBank {
         this.binding = binding
         this.bound_to = bound_to
     }
-    constructor(bank: AccountBank) {
-        this.id = bank.id
-        this.count = bank.count
-        this.charges = bank.charges
-        this.skin = bank.skin
-        this.upgrades = bank.upgrades
-        this.infusions = bank.infusions
-        this.binding = bank.binding
-        this.bound_to = bank.bound_to
+    constructor(inventory: AccountInventory) {
+        this.id = inventory.id
+        this.count = inventory.count
+        this.charges = inventory.charges
+        this.skin = inventory.skin
+        this.upgrades = inventory.upgrades
+        this.infusions = inventory.infusions
+        this.binding = inventory.binding
+        this.bound_to = inventory.bound_to
     }
 
-    fun initAccountBank(): MutableList<AccountBank>? {
-        var accountBank : MutableList<AccountBank>? = mutableListOf<AccountBank>()
+    fun initAccountInventory(): MutableList<AccountInventory>? {
+        var accountInventory : MutableList<AccountInventory>? = mutableListOf<AccountInventory>()
         var gson = Gson()
         var response = HttpRequest().get(Properties.token.value,url)
         if(!response.equals("[]")) {
@@ -69,19 +71,19 @@ class AccountBank {
                 if (!it.equals(list.last()))
                     i += "}"
                 try {
-                    var result = gson?.fromJson(i, AccountBank::class.java)
-                    accountBank?.add(result)
+                    var result = gson?.fromJson(i, AccountInventory::class.java)
+                    accountInventory?.add(result)
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    Log.d("initAccountBank", "Error: $i")
+                    Log.d("initAccountInventory", "Error: $i")
                 }
             }
         }
-        return accountBank
+        return accountInventory
     }
 
     override fun toString(): String {
-        return "AccountBank(id=$id, Count=$count)\n"
+        return "AccountInventory(id=$id, Count=$count)\n"
     }
 
 
