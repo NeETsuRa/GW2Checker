@@ -94,6 +94,7 @@ class Account {
     var accountInventory : MutableList<AccountInventory>? = mutableListOf<AccountInventory>() // /v2/account/inventory
     var accountMailcarriers : List<Int>? = mutableListOf<Int>()// /v2/account/mailcarriers
     var accountMasteries : MutableList<AccountMasteries>? = mutableListOf<AccountMasteries>() //  /v2/account/masteries
+    var accountMasteryPoints : MasteryPoints = MasteryPoints() // /v2/account/mastery/points
 
     constructor(){}
 
@@ -178,6 +179,11 @@ class Account {
         accountMasteries = a.initAccountMasteries()
     }
 
+    fun getMasteryPoints(){
+        var a : MasteryPoints = MasteryPoints()
+        accountMasteryPoints = a.initMasteryPoints()
+    }
+
     fun getDungeons(){
         val dungeonsUrl = Properties.APIUrl.value+GW2_API_V2.account_dungeons.value
         var result = HttpRequest().get(Properties.token.value,dungeonsUrl)
@@ -250,7 +256,8 @@ class Account {
                 "${accountHome.toString()} \n"+
                 "${accountInventory.toString()} \n"+
                 "${accountMailcarriers.toString()} \n"+
-                "${accountMasteries.toString()} \n"
+                "${accountMasteries.toString()} \n"+
+                "${accountMasteryPoints.toString()} \n"
     }
 
 

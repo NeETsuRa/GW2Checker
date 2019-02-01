@@ -41,7 +41,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             //acc.getHome()
             //acc.getInventory()
             //acc.getMailcarriers()
-            acc.getMasteries()
+            //acc.getMasteries()
+            acc.getMasteryPoints()
             val text: TextView = findViewById(R.id.MainText)
             text.setText(acc.toString())
         }
@@ -122,6 +123,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 acc.getInventory()
                 acc.getMailcarriers()
                 acc.getMasteries()
+                acc.getMasteryPoints()
                 val text: TextView = findViewById(R.id.MainText)
                 text.setText(acc.toString())
             }
