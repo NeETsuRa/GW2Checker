@@ -42,7 +42,7 @@ Connected Endpoints:
     (D) /v2/account/inventory
     (D) /v2/account/mailcarriers
     (D) /v2/account/masteries
-    /v2/account/mastery/points
+    (D) /v2/account/mastery/points
     /v2/account/materials
     /v2/account/minis
     /v2/account/mounts
