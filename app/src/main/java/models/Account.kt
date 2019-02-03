@@ -98,6 +98,7 @@ class Account {
     var accountMaterials : MutableList<AccountMaterials>? = mutableListOf<AccountMaterials>() // /v2/account/materials
     var accountMinis : List<Int>? = mutableListOf<Int>()// /v2/account/minis
     var accountMounts : AccountMounts = AccountMounts() // /v2/account/mounts
+    var accountOutfits : List<Int>? = mutableListOf<Int>()// /v2/account/outfits
 
     constructor(){}
 
@@ -253,6 +254,17 @@ class Account {
         }
     }
 
+    fun getOutfits(){
+        val glidersUrl = Properties.APIUrl.value+GW2_API_V2.account_outfits.value
+        var result = HttpRequest().get(Properties.token.value,glidersUrl)
+        if(!result.equals("[]")){
+            result = result.replace("\n","")
+            result = result.replace(" ","")
+            result = result.substring(1, result.length - 1)
+            accountOutfits = result.split(",").map { it.toInt() }
+        }
+    }
+
     override fun toString(): String {
         return "Account(\n" +
                 "  url='$url',\n" +
@@ -284,7 +296,8 @@ class Account {
                 "${accountMasteryPoints.toString()} \n"+
                 "${accountMaterials.toString()} \n"+
                 "${accountMinis.toString()} \n"+
-                "${accountMounts.toString()} \n"
+                "${accountMounts.toString()} \n"+
+                "${accountOutfits.toString()} \n"
 
     }
 
