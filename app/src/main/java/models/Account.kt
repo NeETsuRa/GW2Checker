@@ -48,8 +48,8 @@ Connected Endpoints:
     (D) /v2/account/mounts
     (D)     /v2/account/mounts/skins
     (D)     /v2/account/mounts/types
-    /v2/account/outfits
-    /v2/account/pvp/heroes
+    (D) /v2/account/outfits
+    (D) /v2/account/pvp/heroes
     /v2/account/raids
     /v2/account/recipes
     /v2/account/skins
@@ -99,6 +99,7 @@ class Account {
     var accountMinis : List<Int>? = mutableListOf<Int>()// /v2/account/minis
     var accountMounts : AccountMounts = AccountMounts() // /v2/account/mounts
     var accountOutfits : List<Int>? = mutableListOf<Int>()// /v2/account/outfits
+    var accountPVPHeroes : List<Int>? = mutableListOf<Int>()// /v2/account/pvp/heroes
 
     constructor(){}
 
@@ -265,6 +266,17 @@ class Account {
         }
     }
 
+    fun getPVPHeroes(){
+        val glidersUrl = Properties.APIUrl.value+GW2_API_V2.account_pvp_heroes.value
+        var result = HttpRequest().get(Properties.token.value,glidersUrl)
+        if(!result.equals("[]")){
+            result = result.replace("\n","")
+            result = result.replace(" ","")
+            result = result.substring(1, result.length - 1)
+            accountPVPHeroes = result.split(",").map { it.toInt() }
+        }
+    }
+
     override fun toString(): String {
         return "Account(\n" +
                 "  url='$url',\n" +
@@ -297,7 +309,8 @@ class Account {
                 "${accountMaterials.toString()} \n"+
                 "${accountMinis.toString()} \n"+
                 "${accountMounts.toString()} \n"+
-                "${accountOutfits.toString()} \n"
+                "${accountOutfits.toString()} \n"+
+                "${accountPVPHeroes.toString()} \n"
 
     }
 
