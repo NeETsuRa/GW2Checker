@@ -45,9 +45,9 @@ Connected Endpoints:
     (D) /v2/account/mastery/points
     (D) /v2/account/materials
     (D) /v2/account/minis
-    /v2/account/mounts
-        /v2/account/mounts/skins
-        /v2/account/mounts/types
+    (D) /v2/account/mounts
+    (D)     /v2/account/mounts/skins
+    (D)     /v2/account/mounts/types
     /v2/account/outfits
     /v2/account/pvp/heroes
     /v2/account/raids
@@ -97,6 +97,7 @@ class Account {
     var accountMasteryPoints : MasteryPoints = MasteryPoints() // /v2/account/mastery/points
     var accountMaterials : MutableList<AccountMaterials>? = mutableListOf<AccountMaterials>() // /v2/account/materials
     var accountMinis : List<Int>? = mutableListOf<Int>()// /v2/account/minis
+    var accountMounts : AccountMounts = AccountMounts() // /v2/account/mounts
 
     constructor(){}
 
@@ -191,6 +192,11 @@ class Account {
         accountMaterials = a.initAccountMaterials()
     }
 
+    fun getAccountMmounts(){
+        var a : AccountMounts = AccountMounts()
+        accountMounts = a.initAccountMounts()
+    }
+
     fun getDungeons(){
         val dungeonsUrl = Properties.APIUrl.value+GW2_API_V2.account_dungeons.value
         var result = HttpRequest().get(Properties.token.value,dungeonsUrl)
@@ -277,7 +283,8 @@ class Account {
                 "${accountMasteries.toString()} \n"+
                 "${accountMasteryPoints.toString()} \n"+
                 "${accountMaterials.toString()} \n"+
-                "${accountMinis.toString()} \n"
+                "${accountMinis.toString()} \n"+
+                "${accountMounts.toString()} \n"
 
     }
 

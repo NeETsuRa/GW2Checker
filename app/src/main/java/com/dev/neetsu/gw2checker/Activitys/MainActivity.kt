@@ -44,7 +44,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             //acc.getMasteries()
             //acc.getMasteryPoints()
             //acc.getAccountMaterials()
-            acc.getMinis()
+            //acc.getMinis()
+            acc.getAccountMmounts()
 
             val text: TextView = findViewById(R.id.MainText)
             text.setText(acc.toString())
@@ -129,6 +130,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 acc.getMasteryPoints()
                 acc.getAccountMaterials()
                 acc.getMinis()
+                acc.getAccountMmounts()
                 val text: TextView = findViewById(R.id.MainText)
                 text.setText(acc.toString())
             }
