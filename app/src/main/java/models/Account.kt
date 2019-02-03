@@ -50,7 +50,7 @@ Connected Endpoints:
     (D)     /v2/account/mounts/types
     (D) /v2/account/outfits
     (D) /v2/account/pvp/heroes
-    /v2/account/raids
+    (D) /v2/account/raids
     /v2/account/recipes
     /v2/account/skins
     /v2/account/titles
@@ -100,6 +100,7 @@ class Account {
     var accountMounts : AccountMounts = AccountMounts() // /v2/account/mounts
     var accountOutfits : List<Int>? = mutableListOf<Int>()// /v2/account/outfits
     var accountPVPHeroes : List<Int>? = mutableListOf<Int>()// /v2/account/pvp/heroes
+    var accountRaids : List<String>? = mutableListOf<String>()// /v2/account/raids
 
     constructor(){}
 
@@ -277,6 +278,18 @@ class Account {
         }
     }
 
+    fun getRaids(){
+        val dungeonsUrl = Properties.APIUrl.value+GW2_API_V2.account_raids.value
+        var result = HttpRequest().get(Properties.token.value,dungeonsUrl)
+        if(!result.equals("[]")){
+            result = result.replace("\n","")
+            result = result.replace("\"","")
+            result = result.replace(" ","")
+            result = result.substring(1, result.length - 1)
+            accountRaids = result.split(",")
+        }
+    }
+
     override fun toString(): String {
         return "Account(\n" +
                 "  url='$url',\n" +
@@ -310,7 +323,8 @@ class Account {
                 "${accountMinis.toString()} \n"+
                 "${accountMounts.toString()} \n"+
                 "${accountOutfits.toString()} \n"+
-                "${accountPVPHeroes.toString()} \n"
+                "${accountPVPHeroes.toString()} \n"+
+                "${accountRaids.toString()} \n"
 
     }
 
