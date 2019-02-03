@@ -42,7 +42,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             //acc.getInventory()
             //acc.getMailcarriers()
             //acc.getMasteries()
-            acc.getMasteryPoints()
+            //acc.getMasteryPoints()
+            //acc.getAccountMaterials()
+            acc.getMinis()
+
             val text: TextView = findViewById(R.id.MainText)
             text.setText(acc.toString())
         }
@@ -124,6 +127,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 acc.getMailcarriers()
                 acc.getMasteries()
                 acc.getMasteryPoints()
+                acc.getAccountMaterials()
+                acc.getMinis()
                 val text: TextView = findViewById(R.id.MainText)
                 text.setText(acc.toString())
             }

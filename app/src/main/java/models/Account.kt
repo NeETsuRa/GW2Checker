@@ -43,8 +43,8 @@ Connected Endpoints:
     (D) /v2/account/mailcarriers
     (D) /v2/account/masteries
     (D) /v2/account/mastery/points
-    /v2/account/materials
-    /v2/account/minis
+    (D) /v2/account/materials
+    (D) /v2/account/minis
     /v2/account/mounts
         /v2/account/mounts/skins
         /v2/account/mounts/types
@@ -95,6 +95,8 @@ class Account {
     var accountMailcarriers : List<Int>? = mutableListOf<Int>()// /v2/account/mailcarriers
     var accountMasteries : MutableList<AccountMasteries>? = mutableListOf<AccountMasteries>() //  /v2/account/masteries
     var accountMasteryPoints : MasteryPoints = MasteryPoints() // /v2/account/mastery/points
+    var accountMaterials : MutableList<AccountMaterials>? = mutableListOf<AccountMaterials>() // /v2/account/materials
+    var accountMinis : List<Int>? = mutableListOf<Int>()// /v2/account/minis
 
     constructor(){}
 
@@ -184,6 +186,11 @@ class Account {
         accountMasteryPoints = a.initMasteryPoints()
     }
 
+    fun getAccountMaterials(){
+        var a : AccountMaterials = AccountMaterials()
+        accountMaterials = a.initAccountMaterials()
+    }
+
     fun getDungeons(){
         val dungeonsUrl = Properties.APIUrl.value+GW2_API_V2.account_dungeons.value
         var result = HttpRequest().get(Properties.token.value,dungeonsUrl)
@@ -229,6 +236,17 @@ class Account {
         }
     }
 
+    fun getMinis(){
+        val glidersUrl = Properties.APIUrl.value+GW2_API_V2.account_minis.value
+        var result = HttpRequest().get(Properties.token.value,glidersUrl)
+        if(!result.equals("[]")){
+            result = result.replace("\n","")
+            result = result.replace(" ","")
+            result = result.substring(1, result.length - 1)
+            accountMinis = result.split(",").map { it.toInt() }
+        }
+    }
+
     override fun toString(): String {
         return "Account(\n" +
                 "  url='$url',\n" +
@@ -257,7 +275,10 @@ class Account {
                 "${accountInventory.toString()} \n"+
                 "${accountMailcarriers.toString()} \n"+
                 "${accountMasteries.toString()} \n"+
-                "${accountMasteryPoints.toString()} \n"
+                "${accountMasteryPoints.toString()} \n"+
+                "${accountMaterials.toString()} \n"+
+                "${accountMinis.toString()} \n"
+
     }
 
 
