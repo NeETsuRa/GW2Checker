@@ -292,13 +292,24 @@ class Account {
     }
 
     fun getRecipes(){
-        val glidersUrl = Properties.APIUrl.value+GW2_API_V2.account_recipes.value
-        var result = HttpRequest().get(Properties.token.value,glidersUrl)
+        val recipesUrl = Properties.APIUrl.value+GW2_API_V2.account_recipes.value
+        var result = HttpRequest().get(Properties.token.value,recipesUrl)
         if(!result.equals("[]")){
             result = result.replace("\n","")
             result = result.replace(" ","")
             result = result.substring(1, result.length - 1)
-            accountPVPHeroes = result.split(",").map { it.toInt() }
+            accountRecepies = result.split(",").map { it.toInt() }
+        }
+    }
+
+    fun getSkins(){
+        val skinsUrl = Properties.APIUrl.value+GW2_API_V2.account_skins.value
+        var result = HttpRequest().get(Properties.token.value,skinsUrl)
+        if(!result.equals("[]")){
+            result = result.replace("\n","")
+            result = result.replace(" ","")
+            result = result.substring(1, result.length - 1)
+            accountSkins = result.split(",").map { it.toInt() }
         }
     }
 
@@ -337,7 +348,8 @@ class Account {
                 "${accountOutfits.toString()} \n"+
                 "${accountPVPHeroes.toString()} \n"+
                 "${accountRaids.toString()} \n"+
-                "${accountRecepies.toString()} \n"
+                "${accountRecepies.toString()} \n"+
+                "${accountSkins.toString()} \n"
 
     }
 
