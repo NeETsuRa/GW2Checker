@@ -48,7 +48,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             //acc.getAccountMmounts()
             //acc.getOutfits()
             //acc.getPVPHeroes()
-            acc.getRaids()
+            //acc.getRaids()
+            acc.getRecipes()
 
             val text: TextView = findViewById(R.id.MainText)
             text.setText(acc.toString())
@@ -137,6 +138,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 acc.getOutfits()
                 acc.getPVPHeroes()
                 acc.getRaids()
+                acc.getRecipes()
                 val text: TextView = findViewById(R.id.MainText)
                 text.setText(acc.toString())
             }
