@@ -53,7 +53,7 @@ Connected Endpoints:
     (D) /v2/account/raids
     (D) /v2/account/recipes
     (D) /v2/account/skins
-    /v2/account/titles
+    (D) /v2/account/titles
     /v2/account/wallet
 */
 
@@ -101,8 +101,10 @@ class Account {
     var accountOutfits : List<Int>? = mutableListOf<Int>()// /v2/account/outfits
     var accountPVPHeroes : List<Int>? = mutableListOf<Int>()// /v2/account/pvp/heroes
     var accountRaids : List<String>? = mutableListOf<String>()// /v2/account/raids
-    var accountRecepies : List<Int>? = mutableListOf<Int>()// (D) /v2/account/recipes
-    var accountSkins : List<Int>? = mutableListOf<Int>()// (D) /v2/account/skins
+    var accountRecepies : List<Int>? = mutableListOf<Int>()// /v2/account/recipes
+    var accountSkins : List<Int>? = mutableListOf<Int>()// /v2/account/skins
+    var accountTitles : List<Int>? = mutableListOf<Int>()// /v2/account/titles
+
     constructor(){}
 
     constructor(id: String?, age: Int?, name: String?, world: Int?, guilds: MutableList<String>?, guild_leader: MutableList<String>?, created: String?, access: MutableList<String>?, commander: String?, fractal_level: Int?, daily_ap: Int?, monthly_ap: Int?, wvw_rank: Int?) {
@@ -313,6 +315,16 @@ class Account {
         }
     }
 
+    fun getTitles(){
+        val titlesUrl = Properties.APIUrl.value+GW2_API_V2.account_titles.value
+        var result = HttpRequest().get(Properties.token.value,titlesUrl)
+        if(!result.equals("[]")){
+            result = result.replace("\n","")
+            result = result.replace(" ","")
+            result = result.substring(1, result.length - 1)
+            accountTitles = result.split(",").map { it.toInt() }
+        }
+    }
     override fun toString(): String {
         return "Account(\n" +
                 "  url='$url',\n" +
@@ -349,7 +361,8 @@ class Account {
                 "${accountPVPHeroes.toString()} \n"+
                 "${accountRaids.toString()} \n"+
                 "${accountRecepies.toString()} \n"+
-                "${accountSkins.toString()} \n"
+                "${accountSkins.toString()} \n"+
+                "${accountTitles.toString()} \n"
 
     }
 

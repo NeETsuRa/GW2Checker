@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             //acc.getRaids()
             acc.getRecipes()
             acc.getSkins()
+            acc.getTitles()
 
             val text: TextView = findViewById(R.id.MainText)
             text.setText(acc.toString())
@@ -141,6 +142,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 acc.getRaids()
                 acc.getRecipes()
                 acc.getSkins()
+                acc.getTitles()
                 val text: TextView = findViewById(R.id.MainText)
                 text.setText(acc.toString())
             }
