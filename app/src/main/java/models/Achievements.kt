@@ -2,6 +2,7 @@ package models
 
 import enums.GW2_API_V2
 import enums.Properties
+import models.Subelements.AchivementTiers
 
 /*
 Fields:
@@ -68,4 +69,47 @@ Call Options:
 class Achievements {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.achievements
+
+    var id  : String? = null //- The achievement id.
+    var icon  : String? = null //(string, optional) – The achievement icon.
+    var name  : String? = null //(string) – The achievement name.
+    var description  : String? = null //(string) – The achievement description.
+    var requirement  : String? = null //(string) – The achievement requirement as listed in-game.
+    var locked_text  : String? = null //(string) – The achievement description prior to unlocking it.
+    var type  : String? = null //(string) – The achievement type. Possible values: enum: Achivement_type
+    var flags  : MutableList<String>? = mutableListOf<String>() //(array of strings) - Achievement categories. Possible values:
+    //TODO: Enum
+        // Pvp - can only get progress in PvP or WvW
+        // CategoryDisplay - is a meta achievement
+        // MoveToTop - affects in-game UI collation
+        // IgnoreNearlyComplete - doesn't appear in the "nearly complete" UI
+        // Repeatable - can be repeated multiple times
+        // Hidden - hidden achievement; must fulfil unlock requirements before making progress or showing in the hero panel
+        // RequiresUnlock - must fulfil unlock requirements before making progress but will show in the hero panel before unlocking
+        // RepairOnLogin - unknown
+        // Daily - Flags an achievement as resetting daily.
+        // Weekly - Flags an achievement as resetting weekly.
+        // Monthly - Flags an achievement as resetting monthly.
+        // Permanent - Flags an achievement as progress never reseting.
+    var tiers : MutableList<AchivementTiers>? = mutableListOf<AchivementTiers>() //(array of objects) - Describes the achievement's tiers. Each object contains:
+    var prerequisites : MutableList<Int>? = mutableListOf<Int>() //(array of numbers) (optional) - Contains an array of achievement ids required to progress the given achievement.
+    //TODO: rewards
+    var rewards : MutableList<String>? = mutableListOf<String>() //(array of objects, optional) - Describes the rewards given for the achievement. Each object contains:
+        //    type (string) - The type of reward. Additional fields appear for different values of type.
+        // If Coins:
+        //     count (number) - The number of Coins to be rewarded.
+        // If Item:
+        //     id (number) - The item ID to be rewarded.
+        //     count (number) - The number of id to be rewarded.
+        // If Mastery:
+        //     id (number) - The mastery point ID to be rewarded.
+        //     region (string) - The region the Mastery Point applies to. Either Tyria, Maguuma or Desert.
+        // If Title:
+        //     id (number) - The title id.
+    //TODO: bits
+    var bits : MutableList<String>? = mutableListOf<String>() //(array of objects, optional) - Contains a number of objects, each corresponding to a bitmask value that can give further information on the progress towards the achievement. Each object has the following values:
+        // type (string) - The type of bit. Can be Text, Item, Minipet, or Skin.
+        // id (number, optional) - The ID of the item, mini, or skin, if applicable.
+        // text (string, optional) - The text for the bit, if type is Text.
+    var point_cap : Int? = null //(number, optional) - The maximum number of AP that can be rewarded by an achievement flagged as Repeatable.
 }
