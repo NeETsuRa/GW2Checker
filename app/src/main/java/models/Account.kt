@@ -54,7 +54,7 @@ Connected Endpoints:
     (D) /v2/account/recipes
     (D) /v2/account/skins
     (D) /v2/account/titles
-    /v2/account/wallet
+    (D) /v2/account/wallet
 */
 
 /*
@@ -104,6 +104,7 @@ class Account {
     var accountRecepies : List<Int>? = mutableListOf<Int>()// /v2/account/recipes
     var accountSkins : List<Int>? = mutableListOf<Int>()// /v2/account/skins
     var accountTitles : List<Int>? = mutableListOf<Int>()// /v2/account/titles
+    var accountWallet : MutableList<AccountWallet>? = mutableListOf<AccountWallet>() // /v2/account/wallet
 
     constructor(){}
 
@@ -201,6 +202,11 @@ class Account {
     fun getAccountMmounts(){
         var a : AccountMounts = AccountMounts()
         accountMounts = a.initAccountMounts()
+    }
+
+    fun getAccountWallet(){
+        var a : AccountWallet = AccountWallet()
+        accountWallet = a.initAccountWallet()
     }
 
     fun getDungeons(){
@@ -362,7 +368,8 @@ class Account {
                 "${accountRaids.toString()} \n"+
                 "${accountRecepies.toString()} \n"+
                 "${accountSkins.toString()} \n"+
-                "${accountTitles.toString()} \n"
+                "${accountTitles.toString()} \n"+
+                "${accountWallet.toString()} \n"
 
     }
 
