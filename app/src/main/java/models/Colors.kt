@@ -41,7 +41,7 @@ Call Options:
     https://api.guildwars2.com/v2/colors --> List of all collors
     https://api.guildwars2.com/v2/colors/10?lang=en
 */
-object Colors {
+class Colors {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.colors
 

@@ -5,7 +5,7 @@ import enums.Properties
 
 /*
 Fields:
-     id - The achievement id.
+    id - The achievement id.
     icon (string, optional) – The achievement icon.
     name (string) – The achievement name.
     description (string) – The achievement description.
@@ -65,7 +65,7 @@ Call Options:
     https://api.guildwars2.com/v2/achievements?ids=1840,910,2258&lang=de
     https://api.guildwars2.com/v2/achievements (List) --> No fields just all Achievements as list
  */
-object Achievements {
+class Achievements {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.achievements
 }

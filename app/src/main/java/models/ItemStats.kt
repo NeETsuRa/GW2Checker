@@ -38,7 +38,7 @@ Call Options:
     https://api.guildwars2.com/v2/itemstats?ids=1012
     https://api.guildwars2.com/v2/itemstats?ids=1012&lang=de
 */
-object ItemStats {
+class ItemStats {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.itemstats
 }

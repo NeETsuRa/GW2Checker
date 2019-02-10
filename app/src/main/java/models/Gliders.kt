@@ -30,7 +30,7 @@ Call Options:
     https://api.guildwars2.com/v2/gliders --> list of all
 
 */
-object Gliders {
+class Gliders {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.gliders
 }

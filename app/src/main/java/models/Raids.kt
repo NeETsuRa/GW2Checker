@@ -25,7 +25,7 @@ Call Options:
     https://api.guildwars2.com/v2/raids
     https://api.guildwars2.com/v2/raids/forsaken_thicket
 */
-object Raids {
+class Raids {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.raids
 }

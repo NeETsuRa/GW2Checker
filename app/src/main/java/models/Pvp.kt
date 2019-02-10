@@ -25,7 +25,7 @@ Optional Parameters:
 Call Options:
     https://api.guildwars2.com/v2/pvp
 */
-object Pvp {
+class Pvp {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.pvp
 }

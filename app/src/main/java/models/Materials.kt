@@ -22,7 +22,7 @@ Call Options:
     https://api.guildwars2.com/v2/materials/38
     https://api.guildwars2.com/v2/materials --> list of all materials
 */
-object Materials {
+class Materials {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.materials
 }

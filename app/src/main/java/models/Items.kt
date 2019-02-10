@@ -20,7 +20,7 @@ Call Options:
     https://api.guildwars2.com/v2/items --> all items
 
 */
-object Items {
+class Items {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.items
 }

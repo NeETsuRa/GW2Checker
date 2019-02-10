@@ -27,7 +27,7 @@ Call Options:
     https://api.guildwars2.com/v2/legends/Legend2
     https://api.guildwars2.com/v2/legends?ids=Legend4
 */
-object Legends {
+class Legends {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.legends
 }

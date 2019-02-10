@@ -25,7 +25,7 @@ Call Options:
      https://api.guildwars2.com/v2/currencies/1?lang=en
      https://api.guildwars2.com/v2/currencies --> All currencies
 */
-object Currencies {
+class Currencies {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.currencies
 }

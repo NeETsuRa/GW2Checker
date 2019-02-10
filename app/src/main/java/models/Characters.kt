@@ -25,7 +25,7 @@ Optional Parameters:
 Call Options:
     https://api.guildwars2.com/v2/characters/
 */
-object Characters {
+class Characters {
     //Authorization: Bearer <API key>
     val url = ""+ Properties.APIUrl+ GW2_API_V2.characters
 }

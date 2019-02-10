@@ -19,7 +19,7 @@ Call Options:
     https://api.guildwars2.com/v2/races --> List of all the races
     https://api.guildwars2.com/v2/races/Asura
 */
-object Races {
+class Races {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.races
 }

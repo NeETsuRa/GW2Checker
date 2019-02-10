@@ -31,7 +31,7 @@ Call Options:
     https://api.guildwars2.com/v2/titles?ids=40,90
     https://api.guildwars2.com/v2/titles?id=222&lang=es
 */
-object Titles {
+class Titles {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.titles
 }

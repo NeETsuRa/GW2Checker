@@ -37,6 +37,6 @@ Optional Parameters:
 Call Options:
     https://api.guildwars2.com/v2/continents?ids=all
 */
-object Continents {
+class Continents {
     val url = ""+ Properties.APIUrl+ GW2_API_V2.continents
 }

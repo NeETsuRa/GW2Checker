@@ -34,7 +34,7 @@ Call Options:
     https://api.guildwars2.com/v2/maps/15
     https://api.guildwars2.com/v2/maps --> list of all maps
 */
-object Maps {
+class Maps {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.maps
 }

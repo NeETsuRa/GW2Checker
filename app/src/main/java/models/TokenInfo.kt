@@ -30,7 +30,7 @@ Call Options:
      https://api.guildwars2.com/v2/tokeninfo
 
 */
-object TokenInfo {
+class TokenInfo {
     //Authorization: Bearer <API key>
     val url = ""+ Properties.APIUrl+ GW2_API_V2.tokeninfo
 }

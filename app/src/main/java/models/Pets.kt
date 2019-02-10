@@ -28,7 +28,7 @@ Call Options:
     https://api.guildwars2.com/v2/pets/33
     https://api.guildwars2.com/v2/pets?ids=42
 */
-object Pets {
+class Pets {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.pets
 }

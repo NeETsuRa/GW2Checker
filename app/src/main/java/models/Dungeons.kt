@@ -24,7 +24,7 @@ Call Options:
     https://api.guildwars2.com/v2/dungeons/caudecus_manor
     https://api.guildwars2.com/v2/dungeons?lang=de
 */
-object Dungeons {
+class Dungeons {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.dungeons
 }

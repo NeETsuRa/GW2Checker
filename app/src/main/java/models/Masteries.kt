@@ -34,7 +34,7 @@ Call Options:
     https://api.guildwars2.com/v2/masteries/1
     https://api.guildwars2.com/v2/masteries?ids=1,2&lang=fr
 */
-object Masteries {
+class Masteries {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.masteries
 }

@@ -22,7 +22,7 @@ Optional Parameters:
 Call Options:
     https://api.guildwars2.com/v2/wvw
 */
-object Wvw {
+class Wvw {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.wvw
 }

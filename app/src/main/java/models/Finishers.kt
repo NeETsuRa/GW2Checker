@@ -29,7 +29,7 @@ Call Options:
     https://api.guildwars2.com/v2/finishers?ids=2
     https://api.guildwars2.com/v2/finishers --> List of all
 */
-object Finishers {
+class Finishers {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.finishers
 }

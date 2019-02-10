@@ -35,7 +35,7 @@ Call Options:
     https://api.guildwars2.com/v2/stories?ids=41
     https://api.guildwars2.com/v2/stories?id=15
 */
-object Stories {
+class Stories {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.stories
 }

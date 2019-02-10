@@ -18,7 +18,7 @@ Optional Parameters:
 Call Options:
     https://api.guildwars2.com/v2/backstory
 */
-object BackStory {
+class BackStory {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.backstory
 }

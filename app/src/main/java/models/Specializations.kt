@@ -27,7 +27,7 @@ Call Options:
     https://api.guildwars2.com/v2/specializations/1
     https://api.guildwars2.com/v2/specializations --> List of all Specialisations
 */
-object Specializations {
+class Specializations {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.specializations
 }

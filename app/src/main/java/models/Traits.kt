@@ -19,7 +19,7 @@ Call Options:
     https://api.guildwars2.com/v2/traits/214
     https://api.guildwars2.com/v2/traits --> list of all traits
 */
-object Traits {
+class Traits {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.traits
 }

@@ -29,7 +29,7 @@ Call Options:
     https://api.guildwars2.com/v2/outfits?ids=40,45
     https://api.guildwars2.com/v2/outfits?id=20&lang=fr
 */
-object Outfits {
+class Outfits {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.outfits
 }

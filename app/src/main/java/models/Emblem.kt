@@ -18,7 +18,7 @@ Optional Parameters:
 Call Options:
     https://api.guildwars2.com/v2/emblem --> list of emblems
 */
-object Emblem {
+class Emblem {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.emblem
 

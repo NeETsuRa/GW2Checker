@@ -23,5 +23,5 @@ Call Options:
     https://api.guildwars2.com/v2/mailcarriers/1
     https://api.guildwars2.com/v2/mailcarriers --> list of all mailcarriers
 */
-object Mailcarriers {
+class Mailcarriers {
 }

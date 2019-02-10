@@ -19,7 +19,7 @@ Call Options:
     https://api.guildwars2.com/v2/skills/14375
     https://api.guildwars2.com/v2/skills --> list of all skils
 */
-object Skills {
+class Skills {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.skills
 }

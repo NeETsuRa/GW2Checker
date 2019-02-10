@@ -19,7 +19,7 @@ Call Options:
     https://api.guildwars2.com/v2/quaggans --> list of all wuaggans
     https://api.guildwars2.com/v2/quaggans/box
 */
-object Quaggans {
+class Quaggans {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.quaggans
 }

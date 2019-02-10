@@ -18,7 +18,7 @@ Call Options:
     https://api.guildwars2.com/v2/nodes --> List of all nodes
     https://api.guildwars2.com/v2/nodes/ghost_pepper_node
 */
-object Nodes {
+class Nodes {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.nodes
 }

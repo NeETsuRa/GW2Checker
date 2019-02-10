@@ -25,7 +25,7 @@ Call Options:
     https://api.guildwars2.com/v2/minis/1
     https://api.guildwars2.com/v2/minis --> list of all minis
 */
-object Minis {
+class Minis {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.minis
 }

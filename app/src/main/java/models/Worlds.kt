@@ -21,7 +21,7 @@ Call Options:
     https://api.guildwars2.com/v2/worlds?ids=1001,1002,1003
     https://api.guildwars2.com/v2/worlds?ids=all
 */
-object Worlds {
+class Worlds {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.worlds
 }

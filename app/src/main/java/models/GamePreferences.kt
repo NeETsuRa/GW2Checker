@@ -14,7 +14,7 @@ Optional Parameters:
 Call Options:
 
 */
-object GamePreferences {
+class GamePreferences {
     var build = 0
     var cats = 0
 }

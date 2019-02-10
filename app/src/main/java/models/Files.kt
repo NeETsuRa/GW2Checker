@@ -19,7 +19,7 @@ Call Options:
     https://api.guildwars2.com/v2/files?ids=all
     https://api.guildwars2.com/v2/files --> list of files
 */
-object Files {
+class Files {
     //Authorization: none
     val url = ""+ Properties.APIUrl+ GW2_API_V2.files
 }
