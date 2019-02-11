@@ -97,11 +97,7 @@ class Achievements {
         //     region (string) - The region the Mastery Point applies to. Either Tyria, Maguuma or Desert.
         // If Title:
         //     id (number) - The title id.
-    //TODO: AchievementsBits
     var bits : MutableList<AchievementsBits>? = mutableListOf<AchievementsBits>() //(array of objects, optional) - Contains a number of objects, each corresponding to a bitmask value that can give further information on the progress towards the achievement. Each object has the following values:
-        // type (string) - The type of bit. Can be Text, Item, Minipet, or Skin.
-        // id (number, optional) - The ID of the item, mini, or skin, if applicable.
-        // text (string, optional) - The text for the bit, if type is Text.
     var point_cap : Int? = null //(number, optional) - The maximum number of AP that can be rewarded by an achievement flagged as Repeatable.
 
     constructor()
