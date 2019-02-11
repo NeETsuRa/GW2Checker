@@ -170,8 +170,20 @@ class Achievements {
     }
 
     override fun toString(): String {
-        //TODO refractor
-        return "Achievements(url='$url', id=$id, icon=$icon, name=$name, description=$description, requirement=$requirement, locked_text=$locked_text, type=$type, flags=$flags, tiers=$tiers, prerequisites=$prerequisites, rewards=$rewards, bits=$bits, point_cap=$point_cap)"
+        return "Achievements(\n"+
+                "id=$id,\n" +
+                "icon=$icon,\n" +
+                "name=$name,\n" +
+                "description=$description,\n" +
+                "requirement=$requirement,\n" +
+                "locked_text=$locked_text,\n" +
+                "type=$type,\n" +
+                "flags=$flags,\n" +
+                "tiers=$tiers,\n" +
+                "prerequisites=$prerequisites,\n" +
+                "rewards=$rewards,\n" +
+                "bits=$bits,\n" +
+                "point_cap=$point_cap)\n"
     }
 
 }
