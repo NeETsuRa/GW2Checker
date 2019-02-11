@@ -19,6 +19,7 @@ import enums.Properties
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import models.Account
+import models.Achievements
 
 import webAccess.HttpRequest
 
@@ -31,10 +32,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         fab.setOnClickListener { view ->
             var acc = Account()
-
+            var ach = Achievements().getAchievement(1)
 
             val text: TextView = findViewById(R.id.MainText)
-            text.setText(acc.toString())
+            text.setText(ach.toString())
         }
 
 
@@ -128,7 +129,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 text.setText(acc.toString())
             }
             R.id.nav_slideshow -> {
-
+                var ach = Achievements()
+                val text: TextView = findViewById(R.id.MainText)
+                text.setText(ach.toString())
             }
             R.id.nav_manage -> {
 
