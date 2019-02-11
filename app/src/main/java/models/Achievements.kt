@@ -81,20 +81,7 @@ class Achievements {
     var requirement  : String? = null //(string) – The achievement requirement as listed in-game.
     var locked_text  : String? = null //(string) – The achievement description prior to unlocking it.
     var type  : String? = null //(string) – The achievement type. Possible values: enum: Achivement_type
-    var flags  : MutableList<String>? = mutableListOf<String>() //(array of strings) - Achievement categories. Possible values:
-    //TODO: Enum
-        // Pvp - can only get progress in PvP or WvW
-        // CategoryDisplay - is a meta achievement
-        // MoveToTop - affects in-game UI collation
-        // IgnoreNearlyComplete - doesn't appear in the "nearly complete" UI
-        // Repeatable - can be repeated multiple times
-        // Hidden - hidden achievement; must fulfil unlock requirements before making progress or showing in the hero panel
-        // RequiresUnlock - must fulfil unlock requirements before making progress but will show in the hero panel before unlocking
-        // RepairOnLogin - unknown
-        // Daily - Flags an achievement as resetting daily.
-        // Weekly - Flags an achievement as resetting weekly.
-        // Monthly - Flags an achievement as resetting monthly.
-        // Permanent - Flags an achievement as progress never reseting.
+    var flags  : MutableList<String>? = mutableListOf<String>() //(array of strings) - Achievement categories. Possible values: enum: Achievements_Flags
     var tiers : MutableList<AchivementTiers>? = mutableListOf<AchivementTiers>() //(array of objects) - Describes the achievement's tiers. Each object contains:
     var prerequisites : MutableList<Int>? = mutableListOf<Int>() //(array of numbers) (optional) - Contains an array of achievement ids required to progress the given achievement.
     //TODO: AchievementsRewards
