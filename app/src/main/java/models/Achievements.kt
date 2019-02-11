@@ -183,10 +183,11 @@ class Achievements {
         )
     }
     fun getAchievements(ids: MutableList<Int>?){
-
+        //TODO
     }
 
     override fun toString(): String {
+        //TODO refractor
         return "Achievements(url='$url', id=$id, icon=$icon, name=$name, description=$description, requirement=$requirement, locked_text=$locked_text, type=$type, flags=$flags, tiers=$tiers, prerequisites=$prerequisites, rewards=$rewards, bits=$bits, point_cap=$point_cap)"
     }
 
