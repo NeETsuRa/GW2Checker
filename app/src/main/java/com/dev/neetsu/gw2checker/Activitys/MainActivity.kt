@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import models.Account
 import models.Achievements
+import models.Subelements.AchievementCategories
 
 import webAccess.HttpRequest
 
@@ -35,7 +36,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             var ach = Achievements().getAchievements(mutableListOf(1, 2, 3, 2258))
 
             val text: TextView = findViewById(R.id.MainText)
-            text.setText(ach.toString())
+            //text.setText(ach.toString())
+            text.setText(AchievementCategories().getAllCategories().toString())
         }
 
 

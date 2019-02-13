@@ -3,6 +3,7 @@ package models
 import com.google.gson.Gson
 import enums.GW2_API_V2
 import enums.Properties
+import models.Subelements.AchievementCategories
 import models.Subelements.AchievementsBits
 import models.Subelements.AchievementsRewards
 import models.Subelements.AchivementTiers
@@ -89,7 +90,7 @@ class Achievements {
     var point_cap : Int? = null //(number, optional) - The maximum number of AP that can be rewarded by an achievement flagged as Repeatable.
 
     // TODO: Connected parameters
-    // /v2/achievements/categories
+    var accountAchievements : MutableList<AchievementCategories>? = mutableListOf<AchievementCategories>() // /v2/achievements/categories
     // /v2/achievements/daily
     // /v2/achievements/daily/tomorrow
     // /v2/achievements/groups
