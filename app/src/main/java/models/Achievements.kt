@@ -144,21 +144,7 @@ class Achievements {
         var getUrl = url+"/"+id
         var result = gson.fromJson(HttpRequest().get(Properties.token.value,getUrl), Achievements::class.java)
 
-        return Achievements(
-                result.id,
-                result.icon,
-                result.name,
-                result.description,
-                result.requirement,
-                result.locked_text,
-                result.type,
-                result.flags,
-                result.tiers,
-                result.prerequisites,
-                result.rewards,
-                result.bits,
-                result.point_cap
-        )
+        return result
     }
     fun getAchievements(ids: MutableList<Int>?): MutableList<Achievements>? {
         var result: MutableList<Achievements>? = mutableListOf<Achievements>()

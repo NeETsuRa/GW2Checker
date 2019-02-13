@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             val text: TextView = findViewById(R.id.MainText)
             //text.setText(ach.toString())
-            text.setText(AchievementCategories().getAllCategories().toString())
+            text.setText(AchievementCategories().getAchievementCategorie(1).toString())
         }
 
 
