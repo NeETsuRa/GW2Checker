@@ -84,19 +84,7 @@ class Achievements {
     var flags  : MutableList<String>? = mutableListOf<String>() //(array of strings) - Achievement categories. Possible values: enum: Achievements_Flags
     var tiers : MutableList<AchivementTiers>? = mutableListOf<AchivementTiers>() //(array of objects) - Describes the achievement's tiers. Each object contains:
     var prerequisites : MutableList<Int>? = mutableListOf<Int>() //(array of numbers) (optional) - Contains an array of achievement ids required to progress the given achievement.
-    //TODO: AchievementsRewards
     var rewards : MutableList<AchievementsRewards>? = mutableListOf<AchievementsRewards>() //(array of objects, optional) - Describes the rewards given for the achievement. Each object contains:
-        //    type (string) - The type of reward. Additional fields appear for different values of type.
-        // If Coins:
-        //     count (number) - The number of Coins to be rewarded.
-        // If Item:
-        //     id (number) - The item ID to be rewarded.
-        //     count (number) - The number of id to be rewarded.
-        // If Mastery:
-        //     id (number) - The mastery point ID to be rewarded.
-        //     region (string) - The region the Mastery Point applies to. Either Tyria, Maguuma or Desert.
-        // If Title:
-        //     id (number) - The title id.
     var bits : MutableList<AchievementsBits>? = mutableListOf<AchievementsBits>() //(array of objects, optional) - Contains a number of objects, each corresponding to a bitmask value that can give further information on the progress towards the achievement. Each object has the following values:
     var point_cap : Int? = null //(number, optional) - The maximum number of AP that can be rewarded by an achievement flagged as Repeatable.
 
