@@ -100,6 +100,12 @@ class Achievements {
     var bits : MutableList<AchievementsBits>? = mutableListOf<AchievementsBits>() //(array of objects, optional) - Contains a number of objects, each corresponding to a bitmask value that can give further information on the progress towards the achievement. Each object has the following values:
     var point_cap : Int? = null //(number, optional) - The maximum number of AP that can be rewarded by an achievement flagged as Repeatable.
 
+    // TODO: Connected parameters
+    // /v2/achievements/categories
+    // /v2/achievements/daily
+    // /v2/achievements/daily/tomorrow
+    // /v2/achievements/groups
+
     constructor()
     constructor(id: String?, icon: String?, name: String?, description: String?, requirement: String?, locked_text: String?, type: String?, flags: MutableList<String>?, tiers: MutableList<AchivementTiers>?, prerequisites: MutableList<Int>?, rewards: MutableList<AchievementsRewards>?, bits: MutableList<AchievementsBits>?, point_cap: Int?) {
         this.id = id
@@ -147,7 +153,7 @@ class Achievements {
     fun getAchievement(id: Int?): Achievements {
         var gson = Gson()
         var getUrl = url+"/"+id
-        var result = gson?.fromJson(HttpRequest().get(Properties.token.value,getUrl), Achievements::class.java)
+        var result = gson.fromJson(HttpRequest().get(Properties.token.value,getUrl), Achievements::class.java)
 
         return Achievements(
                 result.id,
@@ -165,8 +171,10 @@ class Achievements {
                 result.point_cap
         )
     }
-    fun getAchievements(ids: MutableList<Int>?){
-        //TODO
+    fun getAchievements(ids: MutableList<Int>?): MutableList<Achievements>? {
+        var result: MutableList<Achievements>? = mutableListOf<Achievements>()
+        ids?.forEach { result?.add(getAchievement(it)) }
+        return result
     }
 
     override fun toString(): String {
@@ -183,7 +191,7 @@ class Achievements {
                 "prerequisites=$prerequisites,\n" +
                 "rewards=$rewards,\n" +
                 "bits=$bits,\n" +
-                "point_cap=$point_cap)\n"
+                "point_cap=$point_cap)\n\n"
     }
 
 }
