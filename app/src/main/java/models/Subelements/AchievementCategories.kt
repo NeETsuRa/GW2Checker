@@ -60,6 +60,19 @@ class AchievementCategories {
 
         return result
     }
+
+    fun getCategoriesPerAchievement(id: String?): MutableList<AchievementCategories>? {
+        var accountAchievements : MutableList<AchievementCategories>? = mutableListOf<AchievementCategories>()
+        var allCategories = getAllCategories()
+        allCategories?.forEach {
+            var categorie = getAchievementCategorie(it)
+            if (categorie.achievements!!.contains(id?.toInt())){
+                accountAchievements?.add(categorie)
+            }
+        }
+
+        return accountAchievements
+    }
     //TODO catergoryes per achivement
 
     override fun toString(): String {

@@ -33,11 +33,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         fab.setOnClickListener { view ->
             var acc = Account()
-            var ach = Achievements().getAchievements(mutableListOf(1, 2, 3, 2258))
+            var ach = Achievements().getAchievements(mutableListOf(1,2,3,2258))
 
             val text: TextView = findViewById(R.id.MainText)
-            //text.setText(ach.toString())
-            text.setText(AchievementCategories().getAchievementCategorie(1).toString())
+            text.setText(ach.toString())
+            //text.setText(AchievementCategories().getAchievementCategorie(1).toString())
         }
 
 

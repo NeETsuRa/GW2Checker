@@ -152,6 +152,10 @@ class Achievements {
         return result
     }
 
+    fun getCategories(){
+        accountAchievements = AchievementCategories().getCategoriesPerAchievement(id)
+    }
+
     override fun toString(): String {
         return "Achievements(\n"+
                 "id=$id,\n" +
@@ -166,7 +170,8 @@ class Achievements {
                 "prerequisites=$prerequisites,\n" +
                 "rewards=$rewards,\n" +
                 "bits=$bits,\n" +
-                "point_cap=$point_cap)\n\n"
+                "point_cap=$point_cap)"+
+                "accountAchievements=${accountAchievements.toString()})"
     }
 
 }
