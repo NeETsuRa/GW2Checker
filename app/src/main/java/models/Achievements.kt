@@ -87,7 +87,6 @@ class Achievements {
     var point_cap : Int? = null //(number, optional) - The maximum number of AP that can be rewarded by an achievement flagged as Repeatable.
 
     // TODO: Connected parameters
-    // /v2/achievements/daily/tomorrow
     // /v2/achievements/groups
 
     constructor()
@@ -145,10 +144,6 @@ class Achievements {
         var result: MutableList<Achievements>? = mutableListOf<Achievements>()
         ids?.forEach { result?.add(getAchievement(it)) }
         return result
-    }
-
-    fun getCategories(){
-
     }
 
     override fun toString(): String {
