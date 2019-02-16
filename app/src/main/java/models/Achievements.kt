@@ -86,9 +86,6 @@ class Achievements {
     var bits : MutableList<AchievementsBits>? = mutableListOf<AchievementsBits>() //(array of objects, optional) - Contains a number of objects, each corresponding to a bitmask value that can give further information on the progress towards the achievement. Each object has the following values:
     var point_cap : Int? = null //(number, optional) - The maximum number of AP that can be rewarded by an achievement flagged as Repeatable.
 
-    // TODO: Connected parameters
-    // /v2/achievements/groups
-
     constructor()
     constructor(id: String?, icon: String?, name: String?, description: String?, requirement: String?, locked_text: String?, type: String?, flags: MutableList<String>?, tiers: MutableList<AchivementTiers>?, prerequisites: MutableList<Int>?, rewards: MutableList<AchievementsRewards>?, bits: MutableList<AchievementsBits>?, point_cap: Int?) {
         this.id = id
