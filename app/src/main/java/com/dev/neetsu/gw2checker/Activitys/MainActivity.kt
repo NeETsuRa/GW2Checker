@@ -20,10 +20,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import models.Account
 import models.Achievements
-import models.Subelements.AchievemensDaily
-import models.Subelements.AchievementCategories
-import models.Subelements.AchievementsDailyTomorow
-import models.Subelements.AchievementsGroups
+import models.Subelements.*
 
 import webAccess.HttpRequest
 
@@ -41,7 +38,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             //text.setText(AchievementCategories().getAllCategories().toString())
             //text.setText(AchievemensDaily().getDailyAchievements().toString())
             //text.setText(AchievementsDailyTomorow().getDailyAchievementsTomorow().toString())
-            text.setText(AchievementsGroups().getGroups(AchievementsGroups().getAllGroups()).toString())
+            //text.setText(AchievementsGroups().getGroups(AchievementsGroups().getAllGroups()).toString())
+            //text.setText(BackStoryQuestions().getBackStoryQuestions(BackStoryQuestions().getAllBackStoryQuestions()).toString())
+            text.setText(BackStoryAnswers().getBackStoryAnwcers(BackStoryAnswers().getAllBackStoryAnwcers()).toString())
             //text.setText(AchievementCategories().getAchievementCategorie(1).toString())
         }
 

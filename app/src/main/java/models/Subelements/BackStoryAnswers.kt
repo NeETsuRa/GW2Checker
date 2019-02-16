@@ -25,16 +25,17 @@ class BackStoryAnswers {
     var professions : MutableList<String>? = mutableListOf<String>() //(array of string) (default/null value: {}) (Optional) - When present, an array of professions that this answer is available as a choice for.
     var races : MutableList<String>? = mutableListOf<String>() //(array of string) (default/null value: {}) (Optional) - When present, an array of races that this answer is available as a choice for.
 
-    fun getAllBackStoryAnwcers(): List<String>? {
+    fun getAllBackStoryAnwcers(): MutableList<String>? {
         var backStoryAnwcers : List<String>? = mutableListOf<String>()
         var result = HttpRequest().get(Properties.token.value,url)
         if(!result.equals("[]")){
             result = result.replace("\n","")
             result = result.replace(" ","")
+            result = result.replace("\"","")
             result = result.substring(1, result.length - 1)
             backStoryAnwcers = result.split(",").map { it }
         }
-        return backStoryAnwcers
+        return backStoryAnwcers as MutableList<String>?
     }
     fun getBackStoryAnwcer(id: String?): BackStoryAnswers {
         var gson = Gson()
@@ -50,7 +51,14 @@ class BackStoryAnswers {
     }
 
     override fun toString(): String {
-        return "BackStoryAnswers(id=$id, title=$title, description=$description, journal=$journal, question=$question, professions=$professions, races=$races)"
+        return "BackStoryAnswers(\n" +
+                " id=$id,\n" +
+                " title=$title,\n" +
+                " description=$description,\n" +
+                " journal=$journal,\n" +
+                " question=$question,\n" +
+                " professions=$professions,\n" +
+                " races=$races)\n\n"
     }
 
 

@@ -20,13 +20,13 @@ class BackStoryQuestions {
     var id : Int? = null //(integer) (default/null value: 0) - The id of the question.
     var title : String? = null //(string) (default/null value: "") - The title (or name) of the question.
     var description : String? = null //(string) (default/null value: "") - The description of the question; as displayed in-game when presented as a Biography choice during character creation.
-    var answers : MutableList<Int>? = mutableListOf<Int>() //(array of integer) (default/null value: {}) - The list of answers for this question; resolvable against v2/backstory/answers.
+    var answers : MutableList<String>? = mutableListOf<String>() //(array of integer) (default/null value: {}) - The list of answers for this question; resolvable against v2/backstory/answers.
     var order : Int? = null //(integer) (default/null value: 0) - The order in which this question is displayed in-game while answering your characters' Biography questions during character creation.
     var races : MutableList<String>? = mutableListOf<String>() //(array of string) (default/null value: {}) (Optional) - When present, an array of races that this question is presented to.
     var professions : MutableList<String>? = mutableListOf<String>() //(array of string) (default/null value: {}) (Optional) - When present, an array of professions that this question is presented to.
 
 
-    fun getAllBackStoryQuestions(): List<Int>? {
+    fun getAllBackStoryQuestions(): MutableList<Int>? {
         var backStoryQuestions : List<Int>? = mutableListOf<Int>()
         var result = HttpRequest().get(Properties.token.value,url)
         if(!result.equals("[]")){
@@ -35,7 +35,7 @@ class BackStoryQuestions {
             result = result.substring(1, result.length - 1)
             backStoryQuestions = result.split(",").map { it.toInt() }
         }
-        return backStoryQuestions
+        return backStoryQuestions as MutableList<Int>?
     }
     fun getBackStoryQuestion(id: Int?): BackStoryQuestions {
         var gson = Gson()
@@ -51,7 +51,14 @@ class BackStoryQuestions {
     }
 
     override fun toString(): String {
-        return "BackStoryQuestions(id=$id, title=$title, description=$description, answers=$answers, order=$order, races=$races, professions=$professions)"
+        return "BackStoryQuestions(\n" +
+                " id=$id,\n" +
+                " title=$title,\n" +
+                " description=$description,\n" +
+                " answers=$answers,\n" +
+                " order=$order,\n" +
+                " races=$races,\n" +
+                " professions=$professions)\n\n"
     }
 
 }

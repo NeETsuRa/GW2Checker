@@ -82,7 +82,7 @@ class AchievementCategories {
                 " description=$description,\n" +
                 " order=$order,\n" +
                 " icon=$icon, \n" +
-                " achievements=$achievements)"
+                " achievements=$achievements)\n\n"
     }
 
 
