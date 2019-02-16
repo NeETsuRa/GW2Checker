@@ -23,6 +23,7 @@ import models.Achievements
 import models.Subelements.AchievemensDaily
 import models.Subelements.AchievementCategories
 import models.Subelements.AchievementsDailyTomorow
+import models.Subelements.AchievementsGroups
 
 import webAccess.HttpRequest
 
@@ -39,7 +40,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             val text: TextView = findViewById(R.id.MainText)
             //text.setText(AchievementCategories().getAllCategories().toString())
             //text.setText(AchievemensDaily().getDailyAchievements().toString())
-            text.setText(AchievementsDailyTomorow().getDailyAchievementsTomorow().toString())
+            //text.setText(AchievementsDailyTomorow().getDailyAchievementsTomorow().toString())
+            text.setText(AchievementsGroups().getGroups(AchievementsGroups().getAllGroups()).toString())
             //text.setText(AchievementCategories().getAchievementCategorie(1).toString())
         }
 
