@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import models.Account
 import models.Achievements
+import models.GamePreferences
 import models.Subelements.*
 
 import webAccess.HttpRequest
@@ -34,13 +35,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fab.setOnClickListener { view ->
             var acc = Account()
             var ach = Achievements().getAchievements(mutableListOf(1,2,3,2258))
+            var pref = GamePreferences()
+            pref.setBuildNummer()
+
             val text: TextView = findViewById(R.id.MainText)
             //text.setText(AchievementCategories().getAllCategories().toString())
             //text.setText(AchievemensDaily().getDailyAchievements().toString())
             //text.setText(AchievementsDailyTomorow().getDailyAchievementsTomorow().toString())
             //text.setText(AchievementsGroups().getGroups(AchievementsGroups().getAllGroups()).toString())
             //text.setText(BackStoryQuestions().getBackStoryQuestions(BackStoryQuestions().getAllBackStoryQuestions()).toString())
-            text.setText(BackStoryAnswers().getBackStoryAnwcers(BackStoryAnswers().getAllBackStoryAnwcers()).toString())
+            //text.setText(BackStoryAnswers().getBackStoryAnwcers(BackStoryAnswers().getAllBackStoryAnwcers()).toString())
+            text.setText(pref.toString())
             //text.setText(AchievementCategories().getAchievementCategorie(1).toString())
         }
 
