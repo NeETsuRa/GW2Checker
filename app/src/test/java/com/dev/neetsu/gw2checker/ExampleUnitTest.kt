@@ -1,5 +1,6 @@
 package com.dev.neetsu.gw2checker
 
+import junit.framework.Assert.assertEquals
 import org.junit.Test
 
 import org.junit.Assert.*
