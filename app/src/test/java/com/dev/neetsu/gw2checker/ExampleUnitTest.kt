@@ -13,6 +13,7 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+        assertEquals("Account balance was not correct.", 10.0, 10.0, 0.0);
+
     }
 }
