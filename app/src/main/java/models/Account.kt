@@ -105,6 +105,7 @@ class Account {
     var accountSkins : List<Int>? = mutableListOf<Int>()// /v2/account/skins
     var accountTitles : List<Int>? = mutableListOf<Int>()// /v2/account/titles
     var accountWallet : MutableList<AccountWallet>? = mutableListOf<AccountWallet>() // /v2/account/wallet
+    var accountCharacters : List<String>? = mutableListOf<String>()// /v2/characters
 
     constructor(){}
 
@@ -299,6 +300,18 @@ class Account {
         }
     }
 
+    fun getCharacters(){
+        val dungeonsUrl = Properties.APIUrl.value+GW2_API_V2.characters.value
+        var result = HttpRequest().get(Properties.token.value,dungeonsUrl)
+        if(!result.equals("[]")){
+            result = result.replace("\n","")
+            result = result.replace("\"","")
+            result = result.replace(" ","")
+            result = result.substring(1, result.length - 1)
+            accountCharacters = result.split(",")
+        }
+    }
+
     fun getRecipes(){
         val recipesUrl = Properties.APIUrl.value+GW2_API_V2.account_recipes.value
         var result = HttpRequest().get(Properties.token.value,recipesUrl)
@@ -369,7 +382,8 @@ class Account {
                 "${accountRecepies.toString()} \n"+
                 "${accountSkins.toString()} \n"+
                 "${accountTitles.toString()} \n"+
-                "${accountWallet.toString()} \n"
+                "${accountWallet.toString()} \n"+
+                "${accountCharacters.toString()} \n"
 
     }
 

@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             var ach = Achievements().getAchievements(mutableListOf(1,2,3,2258))
             var pref = GamePreferences()
             pref.setBuildNummer()
-
             val text: TextView = findViewById(R.id.MainText)
             //text.setText(AchievementCategories().getAllCategories().toString())
             //text.setText(AchievemensDaily().getDailyAchievements().toString())
@@ -45,7 +44,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             //text.setText(AchievementsGroups().getGroups(AchievementsGroups().getAllGroups()).toString())
             //text.setText(BackStoryQuestions().getBackStoryQuestions(BackStoryQuestions().getAllBackStoryQuestions()).toString())
             //text.setText(BackStoryAnswers().getBackStoryAnwcers(BackStoryAnswers().getAllBackStoryAnwcers()).toString())
-            text.setText(pref.toString())
+            //text.setText(pref.toString())
+            acc.getCharacters()
+            text.setText(acc.accountCharacters.toString())
             //text.setText(AchievementCategories().getAchievementCategorie(1).toString())
         }
 
@@ -136,6 +137,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 acc.getSkins()
                 acc.getTitles()
                 acc.getAccountWallet()
+                acc.getCharacters();
                 val text: TextView = findViewById(R.id.MainText)
                 text.setText(acc.toString())
             }
