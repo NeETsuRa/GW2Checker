@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import models.Account
 import models.Achievements
+import models.Characters
 import models.GamePreferences
 import models.Subelements.*
 
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             var acc = Account()
             var ach = Achievements().getAchievements(mutableListOf(1,2,3,2258))
             var pref = GamePreferences()
+            var char = Characters()
             pref.setBuildNummer()
             val text: TextView = findViewById(R.id.MainText)
             //text.setText(AchievementCategories().getAllCategories().toString())
@@ -45,8 +47,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             //text.setText(BackStoryQuestions().getBackStoryQuestions(BackStoryQuestions().getAllBackStoryQuestions()).toString())
             //text.setText(BackStoryAnswers().getBackStoryAnwcers(BackStoryAnswers().getAllBackStoryAnwcers()).toString())
             //text.setText(pref.toString())
-            acc.getCharacters()
-            text.setText(acc.accountCharacters.toString())
+            text.setText(char.accountCharacters.toString())
             //text.setText(AchievementCategories().getAchievementCategorie(1).toString())
         }
 
@@ -137,7 +138,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 acc.getSkins()
                 acc.getTitles()
                 acc.getAccountWallet()
-                acc.getCharacters();
                 val text: TextView = findViewById(R.id.MainText)
                 text.setText(acc.toString())
             }

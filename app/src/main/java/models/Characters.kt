@@ -2,6 +2,7 @@ package models
 
 import enums.GW2_API_V2
 import enums.Properties
+import webAccess.HttpRequest
 
 /*
 Fields:
@@ -28,4 +29,25 @@ Call Options:
 class Characters {
     //Authorization: Bearer <API key>
     val url = ""+ Properties.APIUrl+ GW2_API_V2.characters
+    var accountCharacters : List<String>? = mutableListOf<String>()// /v2/characters
+
+    constructor(accountCharacters: List<String>?) {
+        this.accountCharacters = accountCharacters
+    }
+
+    constructor(){
+        getCharacters()
+    }
+
+    fun getCharacters(){
+        val dungeonsUrl = Properties.APIUrl.value+GW2_API_V2.characters.value
+        var result = HttpRequest().get(Properties.token.value,dungeonsUrl)
+        if(!result.equals("[]")){
+            result = result.replace("\n","")
+            result = result.replace("\"","")
+            result = result.replace(" ","")
+            result = result.substring(1, result.length - 1)
+            accountCharacters = result.split(",")
+        }
+    }
 }
