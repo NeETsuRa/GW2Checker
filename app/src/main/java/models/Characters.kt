@@ -50,4 +50,12 @@ class Characters {
             accountCharacters = result.split(",")
         }
     }
+
+    override fun toString(): String {
+        return "Characters(\n"+
+                "List=$accountCharacters\n" +
+                ")"
+    }
+
+
 }

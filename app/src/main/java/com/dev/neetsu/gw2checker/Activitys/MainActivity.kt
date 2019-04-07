@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             //text.setText(BackStoryQuestions().getBackStoryQuestions(BackStoryQuestions().getAllBackStoryQuestions()).toString())
             //text.setText(BackStoryAnswers().getBackStoryAnwcers(BackStoryAnswers().getAllBackStoryAnwcers()).toString())
             //text.setText(pref.toString())
-            text.setText(char.accountCharacters.toString())
+            text.setText(char.toString())
             //text.setText(AchievementCategories().getAchievementCategorie(1).toString())
         }
 
@@ -147,7 +147,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 text.setText(ach.toString())
             }
             R.id.nav_manage -> {
-
+                var char = Characters()
+                val text: TextView = findViewById(R.id.MainText)
+                text.setText(char.toString())
             }
             R.id.nav_share -> {
 
