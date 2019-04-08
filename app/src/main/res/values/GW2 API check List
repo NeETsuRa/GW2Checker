@@ -1,29 +1,29 @@
 (y)/v2/account
-    /v2/account/achievements
-    /v2/account/bank
-    /v2/account/dungeons
-    /v2/account/dyes
-    /v2/account/finishers
-    /v2/account/gliders
-    /v2/account/home
-        /v2/account/home/cats
-        /v2/account/home/nodes
-    /v2/account/inventory
-    /v2/account/mailcarriers
-    /v2/account/masteries
-    /v2/account/mastery/points
-    /v2/account/materials
-    /v2/account/minis
-    /v2/account/mounts
-        /v2/account/mounts/skins
-        /v2/account/mounts/types
-    /v2/account/outfits
-    /v2/account/pvp/heroes
-    /v2/account/raids
-    /v2/account/recipes
-    /v2/account/skins
-    /v2/account/titles
-    /v2/account/wallet
+(y)    /v2/account/achievements
+(y)    /v2/account/bank
+(y)    /v2/account/dungeons
+(y)    /v2/account/dyes
+(y)    /v2/account/finishers
+(y)    /v2/account/gliders
+(y)    /v2/account/home
+(y)        /v2/account/home/cats
+(y)        /v2/account/home/nodes
+(y)    /v2/account/inventory
+(y)    /v2/account/mailcarriers
+(y)    /v2/account/masteries
+(y)    /v2/account/mastery/points
+(y)    /v2/account/materials
+(y)    /v2/account/minis
+(y)    /v2/account/mounts
+(y)        /v2/account/mounts/skins
+(y)        /v2/account/mounts/types
+(y)    /v2/account/outfits
+(y)    /v2/account/pvp/heroes
+(y)    /v2/account/raids
+(y)    /v2/account/recipes
+(y)    /v2/account/skins
+(y)    /v2/account/titles
+(y)    /v2/account/wallet
 /v2/achievements
     /v2/achievements/categories
     /v2/achievements/daily
