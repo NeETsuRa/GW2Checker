@@ -36,7 +36,6 @@ class Characters {
     }
 
     constructor(){
-        getCharacters()
     }
 
     fun getCharacters(){

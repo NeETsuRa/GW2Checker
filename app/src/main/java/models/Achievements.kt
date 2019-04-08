@@ -55,10 +55,10 @@ Fields:
 
 /*
 Connected Endpoints:
-    /v2/achievements/categories
-    /v2/achievements/daily
-        /v2/achievements/daily/tomorrow
-    /v2/achievements/groups
+    (y) /v2/achievements/categories --> AchievementCategories().getAllCategories()
+    (y) /v2/achievements/daily --> AchievemensDaily().getDailyAchievements()
+    (y)     /v2/achievements/daily/tomorrow --> AchievementsDailyTomorow().getDailyAchievementsTomorow()
+    (y) /v2/achievements/groups --> AchievementsGroups().getGroups(AchievementsGroups().getAllGroups())
  */
 /*
 Optional Parameters:
