@@ -5,7 +5,10 @@ import enums.GW2_API_V2
 import enums.Properties
 import models.Subelements.*
 import webAccess.HttpRequest
-
+/**
+    Get GW Account an all of the components of it.
+ Each Component has to be loaded by the call of an function.
+ */
 /*
 Fields:
     id (string) – The unique persistent account GUID.
