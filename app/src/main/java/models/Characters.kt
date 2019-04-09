@@ -31,6 +31,9 @@ class Characters {
     val url = ""+ Properties.APIUrl+ GW2_API_V2.characters
     var accountCharacters : List<String>? = mutableListOf<String>()// /v2/characters
 
+    var characterBackstory : List<String>? = mutableListOf<String>()// v2/characters/:id/backstory
+
+
     constructor(accountCharacters: List<String>?) {
         this.accountCharacters = accountCharacters
     }
@@ -38,7 +41,11 @@ class Characters {
     constructor(){
     }
 
-    fun getCharacters(){
+    fun initCharacter(id: String?){
+        //TODO load all components
+    }
+
+    fun getCharactersList(){
         val dungeonsUrl = Properties.APIUrl.value+GW2_API_V2.characters.value
         var result = HttpRequest().get(Properties.token.value,dungeonsUrl)
         if(!result.equals("[]")){
